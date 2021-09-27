@@ -1,0 +1,16 @@
+<form  [formGroup]="createQuestion"  >
+    <table class="table table-hover table-sm">
+        <tr>
+           <td><input type="submit" (click)="create()" value="Add Question"></td> 
+        </tr>
+      <tr>
+            <td *ngIf="count>0"> 
+                <b>Question</b>
+              <input type="text" class="form-control" formControlName="question" name="question" required>
+              <br><input type="submit" (click)="add()" value="Add">
+            </td>  
+        </tr>
+   
+    </table>
+</form>
+

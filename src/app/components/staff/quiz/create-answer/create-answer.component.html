@@ -1,0 +1,45 @@
+<br>
+<form  [formGroup]="createAnswer"  (ngSubmit)="onSubmit()">
+    <h2 style="text-align: center;font-size: 20px;"><i>Add options to question</i></h2>
+    <table class="table table-hover table-sm">
+        <!-- <tr>
+           <td><input type="submit" (click)="create()" value="Add Answer"></td> 
+        </tr> -->
+   
+      <tr>
+          <th>Option1</th>
+        <td><input type="text"  class="form-control" formControlName="option1" name="option1" required></td> 
+    </tr>
+    <tr>
+        <th>Option2</th>
+        <td><input type="text"  class="form-control" formControlName="option2" name="option2" required></td> 
+    </tr>
+    <tr>
+        <th>Option3</th>
+        <td><input type="text"  class="form-control" formControlName="option3" name="option3" required></td> 
+    </tr>
+    <tr>
+        <th>Option4</th>
+        <td><input type="text"  class="form-control" formControlName="option4" name="option4" required></td> 
+    </tr>
+
+    <tr>
+        <th>Correct Answer</th>
+        <td><input type="number"  class="form-control" formControlName="crctAns" name="crctAns" required></td> 
+    </tr>
+      
+<tr></tr>
+    <!-- <tr> 
+        <td> 
+          <input type="submit" value="Add Answer">
+        </td>  
+    </tr> -->
+    </table>
+    <input class="button btn-info" type="submit" value="Add Answer"><br><br>
+    <a  href="addquestion">Add More Questions</a>
+    <a style="margin-left: 80px;" href='createquiz'>Back to page</a>
+</form>
+
+
+
+

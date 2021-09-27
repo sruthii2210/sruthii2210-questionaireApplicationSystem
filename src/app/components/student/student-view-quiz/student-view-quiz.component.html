@@ -1,0 +1,57 @@
+<!-- <app-student-dashboard></app-student-dashboard>  -->
+<h2 style="text-align: center;font-size: 20px;"><i>Enter Details</i></h2>
+<form [formGroup]="getClassDetails" (ngSubmit)="onSubmit()">
+    <table class="table table-hover table-sm">
+        <tr>
+            <td>RegisterNo</td>
+            <td><input type="number" class="form-control" formControlName="rollNo" name="rollNo" required></td>
+        </tr>
+        <tr>
+            <td>Standard</td>
+            <td><input type="text" class="form-control" formControlName="standard" name="standard" required></td>
+        </tr>
+        <tr>
+            <td>Section</td>
+            <td><input type="text" class="form-control" formControlName="section" name="section" required></td>
+        </tr>
+        <tr>
+            <td>ClassNo</td>
+            <td><input type="number" (focus)=getClass()  value={{classDetails?.roomNo}} formControlName="roomNo" name="roomNo"></td>
+        </tr>
+        <tr>
+            <td>Courses</td>
+            <td>
+                <select  (focus)="getCourse()" class="custom-select" style="height: 35px" name="code" formControlName="code" required>
+                  <option value="">Select Course</option>
+                  <option *ngFor="let subject of subjectDetails">{{subject.code}}</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Get Quiz" class="btn btn-primary"></td>
+        </tr>
+    </table>
+
+   
+    <div *ngIf="quizDetails.length>0">   
+    <table  class="table table-hover table-sm">
+        <tr>
+            <th>QuizId</th>
+            <th>QuizName</th>
+            <th>QuizDate</th>
+            <th>Action</th>
+        </tr>
+        <tr *ngFor="let quiz of quizDetails">
+            <td>{{quiz.autoId}}</td>
+            <td>{{quiz.name}}</td>
+            <td>{{quiz.quizDate}}</td>
+
+            <td *ngIf="today<quiz.quizDate"><button class="button btn-info">TakeTest</button></td>
+            
+        </tr>
+    </table> 
+    </div>   
+
+</form>
+
