@@ -25,5 +25,6 @@ export class QuizService {
   {
     return this.http.get('http://localhost:8086/api/quiz/date/'+`${date}`); 
   }
+  
 }
 

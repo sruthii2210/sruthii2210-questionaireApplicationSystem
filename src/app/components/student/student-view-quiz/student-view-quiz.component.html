@@ -33,7 +33,8 @@
         </tr>
     </table>
 
-   
+   </form>
+   <form>
     <div *ngIf="quizDetails.length>0">   
     <table  class="table table-hover table-sm">
         <tr>
@@ -47,11 +48,16 @@
             <td>{{quiz.name}}</td>
             <td>{{quiz.quizDate}}</td>
 
-            <td *ngIf="today<quiz.quizDate"><button class="button btn-info">TakeTest</button></td>
-            
+            <td><button (click)="takeTest(quiz.autoId)" [disabled]="quiz?.quizDate<today" class="button btn-info">TakeTest</button></td> 
+            <td><div>
+            <small style="margin-left: 12cm"  *ngIf="quiz?.quizDate<today" class="text-danger">
+                * QuizDate is expired, Not able to take quiz..
+            </small>  
+        </div>
+    </td>
         </tr>
     </table> 
+    
     </div>   
 
 </form>
-

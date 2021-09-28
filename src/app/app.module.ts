@@ -18,6 +18,9 @@ import { ViewQuestionComponent } from './components/staff/quiz/view-question/vie
 import { ViewQuizComponent } from './components/staff/quiz/view-quiz/view-quiz.component';
 import { StudentViewQuizComponent } from './components/student/student-view-quiz/student-view-quiz.component';
 import { StudentHomeComponent } from './components/student/student-home/student-home.component';
+import { TakeQuizComponent } from './components/student/take-quiz/take-quiz.component';
+import { StaffViewResultComponent } from './components/staff/quiz/staff-view-result/staff-view-result.component';
+import { StudentViewResultComponent } from './components/student/student-view-result/student-view-result.component';
 
 
 
@@ -36,6 +39,9 @@ import { StudentHomeComponent } from './components/student/student-home/student-
     StudentDashboardComponent,
     StudentViewQuizComponent,
     StudentHomeComponent,
+    TakeQuizComponent,
+    StaffViewResultComponent,
+    StudentViewResultComponent,
     
   ],
   imports: [

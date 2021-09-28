@@ -10,6 +10,7 @@ export class ClassService {
   constructor(private http:HttpClient) { }
 
   baseUrl: string='http://localhost:8086/api/class/';
+  
   getClass(standard:any,section:any):Observable<any>
   {
     return this.http.get(`${this.baseUrl}`+`${standard}`+'/'+`${section}`); 

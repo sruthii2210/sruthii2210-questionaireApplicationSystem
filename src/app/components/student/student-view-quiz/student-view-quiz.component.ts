@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Class } from 'src/app/model/class';
 import { Quiz } from 'src/app/model/quiz';
@@ -19,13 +20,15 @@ import { TeacherSubjectService } from 'src/app/services/teacher-subject.service'
 export class StudentViewQuizComponent implements OnInit {
 
   response: Response = new Response;
-  classDetails: Class | any
-  teacherSub: TeacherSubject[] | any
+  classDetails: Class = new Class;
+  teacherSub: TeacherSubject = new TeacherSubject;
   quizDetails: Quiz[] = []
-  subjectDetails: Subject[] | any
+  subjectDetails: Subject[] =[]
   roomNo: number = 0
   today: string="";
-  constructor(private classService: ClassService, private subService: SubjectService, private teacherSubject: TeacherSubjectService, private quizService: QuizService) {
+  constructor(private classService: ClassService, private subService: SubjectService, 
+    private teacherSubject: TeacherSubjectService, private quizService: QuizService,
+    private router:Router) {
   }
 
 
@@ -42,7 +45,9 @@ export class StudentViewQuizComponent implements OnInit {
     }
   )
 
+  
   getCourse() {
+    localStorage.setItem("rollNo",this.getClassDetails.get('rollNo')?.value)
     this.subService.getSubject(this.classDetails.standard).subscribe(
       data => {
         this.response = data
@@ -56,14 +61,19 @@ export class StudentViewQuizComponent implements OnInit {
       .subscribe(data => {
         this.response = data
         this.classDetails = this.response.data
-        this.roomNo = this.classDetails.roomNo
         console.log(data)
       })
   }
 
+  takeTest(autoId:any)
+  {
+    console.log(autoId)
+    localStorage.setItem("quizId",autoId);
+    this.router.navigate(['takequiz']);
+  }
   onSubmit() {
-    console.log(this.roomNo)
-    this.teacherSubject.getTeacherSubject(this.roomNo, this.getClassDetails.get('code')?.value).subscribe(
+    localStorage.setItem("subjectCode",this.getClassDetails.get('code')?.value)
+    this.teacherSubject.getTeacherSubject(this.classDetails.roomNo, this.getClassDetails.get('code')?.value).subscribe(
       data => {
         this.response = data
         this.teacherSub = this.response.data

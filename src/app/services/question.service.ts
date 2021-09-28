@@ -18,4 +18,9 @@ export class QuestionService {
   {
     return this.http.get('http://localhost:8086/api/question/'+`${id}`); 
   }
+
+  getQuestionCount(quizId:any):Observable<any>
+  {
+    return this.http.get('http://localhost:8086/api/question/questionCount/'+`${quizId}`); 
+  }
 }

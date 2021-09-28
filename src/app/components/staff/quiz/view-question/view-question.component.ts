@@ -12,19 +12,18 @@ import { QuestionService } from 'src/app/services/question.service';
 })
 export class ViewQuestionComponent implements OnInit {
 
-  response: Response = new Response;
-  id:number | any
-  questions:Question[]|any
+ 
+  
+  questions:Question[]=[]
   constructor(private questionService:QuestionService,private router:Router) { }
 
 
   ngOnInit(): void {
 
-     this.id=localStorage.getItem("id")
-    this.questionService.getQuestion(this.id).subscribe(
-      res=>{
-         this.response=res;
-         this.questions=this.response.data
+    this.questionService.getQuestion(localStorage.getItem("id")).subscribe(
+      response=>{
+       let responseBody: Response = response;
+         this.questions=responseBody.data
           console.log(this.questions)
       })
   }
