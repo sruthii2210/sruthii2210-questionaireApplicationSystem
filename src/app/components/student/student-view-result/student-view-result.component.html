@@ -28,9 +28,14 @@
             <th>Quiz1</th>
             <th>Quiz2</th>
             <th>Quiz3</th>
+            <th>TotalScore</th>
         </tr>
-        <tr *ngFor="let subject of subjectDetails">
+        <tr *ngFor="let subject of subjectDetails;let i=index">
             <td>{{subject.code}}</td>
+            <td>{{quizOne[i]}}</td>
+            <td>{{quizTwo[i]}}</td>
+            <td>{{quizThree[i]}}</td>
+            <td>{{quizOne[i]+quizTwo[i]+quizThree[i]}}</td>
         </tr>
     </table>
 </form>
