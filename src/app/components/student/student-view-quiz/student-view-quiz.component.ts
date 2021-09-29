@@ -5,10 +5,12 @@ import { Observable } from 'rxjs';
 import { Class } from 'src/app/model/class';
 import { Quiz } from 'src/app/model/quiz';
 import { Response } from 'src/app/model/response';
+import { Student } from 'src/app/model/student';
 import { Subject } from 'src/app/model/subject';
 import { TeacherSubject } from 'src/app/model/teacher-subject';
 import { ClassService } from 'src/app/services/class.service';
 import { QuizService } from 'src/app/services/quiz.service';
+import { StudentService } from 'src/app/services/student.service';
 import { SubjectService } from 'src/app/services/subject.service';
 import { TeacherSubjectService } from 'src/app/services/teacher-subject.service';
 
@@ -23,12 +25,13 @@ export class StudentViewQuizComponent implements OnInit {
   classDetails: Class = new Class;
   teacherSub: TeacherSubject = new TeacherSubject;
   quizDetails: Quiz[] = []
+  student: Student = new Student;
   subjectDetails: Subject[] =[]
   roomNo: number = 0
   today: string="";
   constructor(private classService: ClassService, private subService: SubjectService, 
     private teacherSubject: TeacherSubjectService, private quizService: QuizService,
-    private router:Router) {
+    private router:Router,private studentService:StudentService) {
   }
 
 
@@ -45,10 +48,23 @@ export class StudentViewQuizComponent implements OnInit {
     }
   )
 
-  
+  getStudent() {
+    this.studentService.getStudentById(this.getClassDetails.get('rollNo')?.value).subscribe(
+      response => {
+
+        let responseBody: Response = response
+        this.student = responseBody.data
+        console.log(this.student)
+
+      }, error => {
+        window.alert(error.error.statusText)
+      }
+    )
+  }
+
   getCourse() {
     localStorage.setItem("rollNo",this.getClassDetails.get('rollNo')?.value)
-    this.subService.getSubject(this.classDetails.standard).subscribe(
+    this.subService.getSubject(this.student.classRoom?.standard).subscribe(
       data => {
         this.response = data
         this.subjectDetails = this.response.data
@@ -56,15 +72,7 @@ export class StudentViewQuizComponent implements OnInit {
       }
     )
   }
-  getClass() {
-    this.classService.getClass(this.getClassDetails.get('standard')?.value, this.getClassDetails.get('section')?.value)
-      .subscribe(data => {
-        this.response = data
-        this.classDetails = this.response.data
-        console.log(data)
-      })
-  }
-
+ 
   takeTest(autoId:any)
   {
     console.log(autoId)
@@ -73,11 +81,12 @@ export class StudentViewQuizComponent implements OnInit {
   }
   onSubmit() {
     localStorage.setItem("subjectCode",this.getClassDetails.get('code')?.value)
-    this.teacherSubject.getTeacherSubject(this.classDetails.roomNo, this.getClassDetails.get('code')?.value).subscribe(
+    this.teacherSubject.getTeacherSubject(this.student.classRoom?.roomNo, this.getClassDetails.get('code')?.value).subscribe(
       data => {
         this.response = data
         this.teacherSub = this.response.data
         console.log(this.teacherSub)
+        console.log(this.teacherSub.teacherId)
 
         this.quizService.getQuiz(this.teacherSub.teacherId, this.getClassDetails.get('code')?.value).subscribe(
           data => {

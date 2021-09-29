@@ -13,4 +13,9 @@ export class StudentService {
   {
     return this.http.get('http://localhost:8086/api/student/'+`${roomNo}`); 
   }
+  getStudentById(rollNo:any):Observable<any>
+  {
+    return this.http.get('http://localhost:8086/api/student/'+`${rollNo}`);
+  }
+
 }

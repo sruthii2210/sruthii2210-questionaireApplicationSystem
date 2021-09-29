@@ -10,11 +10,13 @@ import { ViewCourseQuizComponent } from './components/staff/quiz/view-course-qui
 import { ViewQuestionComponent } from './components/staff/quiz/view-question/view-question.component';
 import { ViewQuizComponent } from './components/staff/quiz/view-quiz/view-quiz.component';
 import { StaffDashboardComponent } from './components/staff/staff-dashboard/staff-dashboard.component';
+import { StaffLoginComponent } from './components/staff/staff-login/staff-login.component';
 import { StudentDashboardComponent } from './components/student/student-dashboard/student-dashboard.component';
 import { StudentHomeComponent } from './components/student/student-home/student-home.component';
 import { StudentViewQuizComponent } from './components/student/student-view-quiz/student-view-quiz.component';
 import { StudentViewResultComponent } from './components/student/student-view-result/student-view-result.component';
 import { TakeQuizComponent } from './components/student/take-quiz/take-quiz.component';
+import { ViewProfileComponent } from './components/student/view-profile/view-profile.component';
 
 
 const routes: Routes = [
@@ -33,6 +35,8 @@ const routes: Routes = [
     { path: 'takequiz', component: TakeQuizComponent},
     {path:'staffviewresult',component:StaffViewResultComponent},
     {path:'studentviewresult',component:StudentViewResultComponent},
+    {path:'studentviewprofile',component:ViewProfileComponent},
+    {path:'stafflogin',component:StaffLoginComponent},
 
   // { path: 'studentdashboard', component: StudentDashboardComponent, children: [
   //     {path: 'studentviewquiz', component: StudentViewQuizComponent,children:[ { path: 'takequiz', component: TakeQuizComponent }]},

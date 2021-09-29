@@ -56,11 +56,11 @@
             <td><b>Score</b></td>
         </tr >
         <tr *ngFor="let result of results">
-            <td>{{result.rollNo}}</td>
-            <td>{{result.name}}</td>
-            <td>{{result.code}}</td>
-            <td>{{result.subjectName}}</td>
-            <td>{{result.quizId}}</td>
+             <td>{{result.student?.rollNo}}</td>
+            <td>{{result.student?.name}}</td>
+            <td>{{result.subject?.code}}</td>
+            <td>{{result.subject?.name}}</td>
+            <td>{{result.quiz?.autoId}}</td>
             <td>{{result.score}}</td>
             
             

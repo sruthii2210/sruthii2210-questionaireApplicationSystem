@@ -10,6 +10,8 @@ import { ResultService } from 'src/app/services/result.service';
 import { Result } from 'src/app/model/result';
 import { ResultModel } from 'src/app/model/result-model';
 import { QuestionService } from 'src/app/services/question.service';
+import { Student } from 'src/app/model/student';
+import { Subject } from 'src/app/model/subject';
 
 @Component({
   selector: 'app-staff-view-result',
@@ -20,9 +22,12 @@ export class StaffViewResultComponent implements OnInit {
 
   subjects: TeacherSubject[] =[]
   teacherSubject: TeacherSubject = new TeacherSubject;
+  quiz: Quiz = new Quiz;
+  subject: Subject = new Subject;
   quizList: Quiz[] = []
-  results:ResultModel[]=[]
+  results:Result[]=[]
   totalScore:number[]=[]
+  student: Student = new Student;
   constructor(private subjectService: SubjectService, private quizService: QuizService, 
     private router: Router,private resultService:ResultService,
     private questionService:QuestionService) { }

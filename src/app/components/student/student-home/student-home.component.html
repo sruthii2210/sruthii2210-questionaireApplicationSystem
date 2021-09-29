@@ -4,15 +4,15 @@
     <table class="table table-hover table-sm">
         <tr>
             <td>RegisterNo</td>
-            <td><input type="number" class="form-control" formControlName="rollNo" name="rollNo" required></td>
+            <td><input type="number" class="form-control" formControlName="rollNo" name="rollNo" (change)="getStudent()" required></td>
         </tr>
         <tr>
             <td>Standard</td>
-            <td><input type="text" class="form-control" formControlName="standard" name="standard" required></td>
+            <td><input type="text" class="form-control" formControlName="standard" value={{student.classRoom?.standard}} name="standard" required></td>
         </tr>
         <tr>
             <td>Section</td>
-            <td><input type="text" class="form-control" formControlName="section" name="section" (focus)=getCourses() required></td>
+            <td><input type="text" class="form-control" formControlName="section" value={{student.classRoom?.section}} name="section"  required></td>
         </tr>
     </table>
     <button  (click)=getClass() class="button btn-info">Get QuizDetails</button>
@@ -30,12 +30,12 @@
             <th>ExpiredQuiz</th>
         </tr>
         
-        <tr *ngFor="let subject of subjects;let i=index">
+        <tr  *ngFor="let subject of subjects;let i=index">
             <td>{{subject.code}}</td>
-            <td>{{totalQuiz[i]}}</td>
-            <td>{{pendingQuiz[i]}}</td>
-            <td>{{completedQuiz[i]}}</td>
-            <td>{{ExpiredQuiz[i]}}</td>
+            <td style="text-align: center;">{{totalQuiz[i]}}</td>
+            <td style="text-align: center;">{{pendingQuiz[i]}}</td>
+            <td style="text-align: center;">{{completedQuiz[i]}}</td>
+            <td style="text-align: center;">{{ExpiredQuiz[i]}}</td>
             <!-- <td>{{teachersId[i]}}</td> -->
         </tr>
     </table>

@@ -15,4 +15,8 @@ export class ClassService {
   {
     return this.http.get(`${this.baseUrl}`+`${standard}`+'/'+`${section}`); 
   }
+  getClassByRoomNo(roomNo:any):Observable<any>
+  {
+    return this.http.get(`${this.baseUrl}`+`${roomNo}`); 
+  }
 }

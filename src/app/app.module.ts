@@ -21,7 +21,9 @@ import { StudentHomeComponent } from './components/student/student-home/student-
 import { TakeQuizComponent } from './components/student/take-quiz/take-quiz.component';
 import { StaffViewResultComponent } from './components/staff/quiz/staff-view-result/staff-view-result.component';
 import { StudentViewResultComponent } from './components/student/student-view-result/student-view-result.component';
-
+import { ViewProfileComponent } from './components/student/view-profile/view-profile.component';
+import { StaffLoginComponent } from './components/staff/staff-login/staff-login.component';
+import { ModalModule } from 'ngx-bootstrap';
 
 
 @NgModule({
@@ -42,6 +44,9 @@ import { StudentViewResultComponent } from './components/student/student-view-re
     TakeQuizComponent,
     StaffViewResultComponent,
     StudentViewResultComponent,
+    ViewProfileComponent,
+    StaffLoginComponent,
+    
     
   ],
   imports: [
@@ -50,9 +55,10 @@ import { StudentViewResultComponent } from './components/student/student-view-re
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ModalModule.forRoot()
   ],
-  providers: [DatePipe],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
