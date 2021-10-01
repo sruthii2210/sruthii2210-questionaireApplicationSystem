@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { DatePipe } from '@angular/common';
+import {MatDialogModule} from "@angular/material/dialog";
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
@@ -23,7 +23,19 @@ import { StaffViewResultComponent } from './components/staff/quiz/staff-view-res
 import { StudentViewResultComponent } from './components/student/student-view-result/student-view-result.component';
 import { ViewProfileComponent } from './components/student/view-profile/view-profile.component';
 import { StaffLoginComponent } from './components/staff/staff-login/staff-login.component';
-import { ModalModule } from 'ngx-bootstrap';
+import { UpdateProfileComponent } from './components/student/update-profile/update-profile.component';
+import { StudentLoginComponent } from './components/student/student-login/student-login.component';
+import { AddStudentComponent } from './components/headmaster/add-student/add-student.component';
+import { HeadMasterDashboardComponent } from './components/headmaster/head-master-dashboard/head-master-dashboard.component';
+import { ViewStudentComponent } from './components/headmaster/view-student/view-student.component';
+import { AddClassComponent } from './components/headmaster/add-class/add-class.component';
+import { StaffSignUpComponent } from './components/staff/staff-sign-up/staff-sign-up.component';
+import { AddSubjectComponent } from './components/headmaster/add-subject/add-subject.component';
+import { AddTeacherSubjectComponent } from './components/headmaster/add-teacher-subject/add-teacher-subject.component';
+import { StaffLoginCredentialsComponent } from './components/staff/staff-login-credentials/staff-login-credentials.component';
+import { StaffViewStudentComponent } from './components/staff/staff-view-student/staff-view-student.component';
+
+// import { ModalModule } from 'ngx-bootstrap';
 
 
 @NgModule({
@@ -46,6 +58,17 @@ import { ModalModule } from 'ngx-bootstrap';
     StudentViewResultComponent,
     ViewProfileComponent,
     StaffLoginComponent,
+    UpdateProfileComponent,
+    StudentLoginComponent,
+    AddStudentComponent,
+    HeadMasterDashboardComponent,
+    ViewStudentComponent,
+    AddClassComponent,
+    StaffSignUpComponent,
+    AddSubjectComponent,
+    AddTeacherSubjectComponent,
+    StaffLoginCredentialsComponent,
+    StaffViewStudentComponent,
     
     
   ],
@@ -56,9 +79,13 @@ import { ModalModule } from 'ngx-bootstrap';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    ModalModule.forRoot()
+    MatDialogModule,
+    
+    
+    // ModalModule.forRoot()
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[UpdateProfileComponent]
 })
 export class AppModule { }

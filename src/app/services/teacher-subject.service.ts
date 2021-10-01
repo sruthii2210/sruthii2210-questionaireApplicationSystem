@@ -20,4 +20,12 @@ export class TeacherSubjectService {
   {
       return this.http.get(`${this.baseUrl}`+`${roomNo}`+'/'+`${code}`);
   }
+  assignStaff(id:any,code:any,roomNo:any,staff:any):Observable<any>
+  {
+    return this.http.post(`${this.baseUrl}`+'teacher/'+`${id}`+'/subject/'+`${code}`+'/'+`${roomNo}`,staff);
+  }
+  getTeacherSubjectById(id:any,code:any):Observable<any>
+  {
+    return this.http.get(`${this.baseUrl}`+'staff/'+`${id}`+'/'+`${code}`)
+  }
 }

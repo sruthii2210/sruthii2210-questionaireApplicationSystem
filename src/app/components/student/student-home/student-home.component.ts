@@ -140,47 +140,6 @@ export class StudentHomeComponent implements OnInit {
                             this.expired = this.expired + 1
                           }
 
-                          // this.resultService.getResult(quizDetails[i].autoId).subscribe(
-                          //   response => {
-
-                          //     let index: any = 0
-                          //     let resultDetails: ResultModel[] = []
-                          //     let responseBody: Response = response
-                          //     resultDetails = responseBody.data
-                          //     console.log(resultDetails)
-                          //     let studentIds = []
-
-                          //     for (index in resultDetails)
-                          //       studentIds.push(resultDetails[index].rollNo);
-                          //     console.log(studentIds)
-
-                          //     let rollNo: number = Number(localStorage.getItem("rollNo"))
-                          //     index = 0
-
-                          //     for (index in studentIds) {
-
-                          //       if (studentIds[index] == rollNo) {
-                          //         this.completed = this.completed + 1
-                          //         console.log(this.completed)
-                          //       }
-                          //       else{
-                          //         this.completed=0
-                          //         this.available=this.available+1
-                          //         this.pendingQuiz[i] = this.available
-                          //         console.log(this.pendingQuiz[i])
-                          //       }
-
-                          //       this.completedQuiz[i] = this.completed;
-                          //       console.log(this.pendingQuiz[i])
-                          //        if(this.pendingQuiz[i]>0)
-                          //       this.pendingQuiz[i]=this.pendingQuiz[i]-this.completedQuiz[i]
-                          //       else
-                          //       this.pendingQuiz[i]=0
-                          //       console.log(this.pendingQuiz[i])
-                          //     }
-                          //   }
-                          // )
-
                           this.resultService.getResult(quizDetails[i].autoId).subscribe(
                             response => {
 
@@ -190,25 +149,26 @@ export class StudentHomeComponent implements OnInit {
                               resultDetails = responseBody.data
                               console.log(resultDetails)
                               let studentIds = []
-                              let quizIds = []
+
 
                               for (index in resultDetails) {
                                 studentIds.push(resultDetails[index].rollNo);
-                                quizIds.push(resultDetails[index].quizId);
                               }
                               console.log(studentIds)
 
                               let rollNo: number = Number(localStorage.getItem("rollNo"))
                               index = 0
-
-                              if (studentIds[index] == rollNo && quizIds[index] == quizDetails[i].autoId) {
+                              
+                              for(let index=0;index<resultDetails.length;i++){
+                                  console.log(studentIds[index]+" "+rollNo)
+                              if (studentIds[index] == rollNo && resultDetails[index].quizId == quizDetails[i].autoId) {
                                 this.completed = this.completed + 1
-                                console.log(quizDetails[i].autoId)
+                                this.completedQuiz[i] = this.completed
+                                this.pendingQuiz[i] = this.pendingQuiz[i] - 1
+                                console.log(quizDetails[i].autoId)}
                               }
 
-                              this.completedQuiz[i] = this.completed
                             })
-
                         }
 
                         this.pendingQuiz[i] = this.available;

@@ -1,0 +1,39 @@
+    <br>
+    <h3 style="text-align: center;"><b><i>Updating Profile</i></b></h3>
+    <form >
+        <br>
+        <table >
+            <!-- <tr>
+                <th>RegisterNo</th>
+                <td><input type="number" class="form-control" name="rollNo" [(ngModel)]="student.rollNo" readonly=true></td>
+            </tr> -->
+            <tr>
+                <th>Name</th>
+                <td><input type="text" class="form-control" name="name" [(ngModel)]="student.name" ></td>
+            </tr>
+            <!-- <tr>
+                <th>Standard</th>
+                <td><input type="text" class="form-control" name="standard" [(ngModel)]="student.classRoom.standard"></td>
+            </tr>
+            <tr>
+                <th>Section</th>
+                <td><input type="text" class="form-control" name="section" [(ngModel)]="student.classRoom?.section" ></td>
+            </tr>-->
+            <tr>
+                <th>DateOfBirth</th>
+                <td><input type="date" class="form-control" name="dateOfBirth" [(ngModel)]="student.dateOfBirth" ></td>
+            </tr>
+            <tr>
+                <th>Gender</th>
+                <td><input type="text" class="form-control" name="gender" [(ngModel)]="student.gender" ></td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td><input type="text" class="form-control" name="address" [(ngModel)]="student.address"></td>
+            </tr>      
+        </table>
+        <br>
+        <button style="margin-left: 15cm;" (click)="onSubmit()" class="button btn-info">Submit</button>
+        <button type="button" (click)="Cancel()" class="btn btn-danger">Close</button>
+    </form>
+    

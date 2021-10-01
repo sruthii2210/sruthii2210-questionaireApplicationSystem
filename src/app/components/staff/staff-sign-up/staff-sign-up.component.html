@@ -1,0 +1,50 @@
+<br>
+<h3 style="text-align: center;font-size: 20px;"><b><i>Add StaffDetails</i></b></h3>
+<form [formGroup]="addStaff">
+    <br>
+    <table>
+        <tr>
+            <th>Id</th>
+            <td colspan="3"><input  type="number" class="form-control" name="id" formControlName="id" required></td>
+        </tr>
+        <tr>
+            <th>FirstName</th>
+            <td><input  type="text" class="form-control" name="firstName" formControlName="firstName" required></td>
+          </tr>
+        <tr>
+            <th>LastName</th>
+            <td><input  type="text" class="form-control" name="lastName" formControlName="lastName" required></td>
+        </tr>
+        <tr>
+            <th>DateOfBirth</th>
+            <td><input  type="date" class="form-control" name="dateOfBirth" formControlName="dateOfBirth" required></td>
+        </tr>
+        <tr>
+            <th>Gender</th>
+            <td><input  type="text" class="form-control" name="gender" formControlName="gender"  required></td>
+        </tr>
+        <tr>
+            <th>Qualification</th>
+            <td><select  class="custom-select" style="height: 35px" name="qualification" formControlName="qualification" required >
+                <option>PhD</option>
+                <option>MPhil</option>
+                <option>MTech</option>
+            </select></td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td><input  type="text" class="form-control" name="email" formControlName="email" required></td>
+        </tr>
+        <tr>
+            <th>ContactNo</th>
+            <td><input  type="tel" class="form-control" name="contactNo" formControlName="contactNo" required></td>
+        </tr>
+        <tr>
+            <th>Address</th>
+            <td><input  type="tel" class="form-control" name="address" formControlName="address" required></td>
+        </tr>
+    </table>
+    <br>
+    <button (click)="add()" class="button btn-info" >AddStaff</button>
+</form>
+

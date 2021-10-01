@@ -15,10 +15,14 @@ export class HomeComponent implements OnInit {
 
   staff()
   {
-    this.router.navigate(['staffdashboard'])
+    this.router.navigate(['stafflogin'])
   }
   student()
   {
-    this.router.navigate(['studentdashboard'])
+    this.router.navigate(['studentlogin'])
+  }
+  headmaster()
+  {
+    this.router.navigate(['headmasterdashboard'])
   }
 }

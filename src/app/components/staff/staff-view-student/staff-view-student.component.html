@@ -1,0 +1,59 @@
+<br>
+<h2 style="text-align: center;font-size: 20px;"><i>View StudentList</i></h2>
+<form [formGroup]="viewStudent">
+    <table class="table table-hover table-sm">
+        <tr>
+            <th>StaffId</th>
+            <td><input type="number" name="staffId" class="form-control" formControlName="staffId"></td>
+        </tr>
+        <tr>
+            <th>Course</th>
+            <td>
+                <select (focus)="getCourse()" class="custom-select" style="height: 35px" name="code"
+                    formControlName="code" required>
+                    <option value="">Select Course</option>
+                    <option *ngFor="let subject of subjects">{{subject?.code}}</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="submit" class="button btn-info" (click)="getDetails()" value="GetDetails"></td>
+        </tr>
+    </table>
+
+
+<div *ngIf="standards.length>0">
+    <table class="table table-hover table-sm">
+        <tr>
+            <th>Class</th>
+            <td>
+                 <select class="custom-select" style="height: 35px" name="standardSection" formControlName="standardSection" required>
+                    <option value="">Select Section</option>
+                    <option *ngFor="let standard of standards;let i=index">{{standard}}-{{sections[i]}}</option>
+                </select> 
+            </td> 
+            <td>
+                <button (click)="getStudent()" class="button btn-info">GetStudents</button>
+            </td>
+        </tr>
+    </table>
+</div>
+<div *ngIf="students.length>0">
+    <table class="table table-hover table-sm">
+        <tr>
+            <th>RegisterNo</th>
+            <th>Name</th>
+            <th>DateOfBirth</th>
+            <th>Gender</th>
+            <th>Address</th>
+        </tr>
+        <tr *ngFor="let student of students">
+            <td>{{student.rollNo}}</td>
+            <td>{{student.name}}</td>
+            <td>{{student.dateOfBirth}}</td>
+            <td>{{student.gender}}</td>
+            <td>{{student.address}}</td>
+        </tr>
+    </table>
+</div>
+</form>

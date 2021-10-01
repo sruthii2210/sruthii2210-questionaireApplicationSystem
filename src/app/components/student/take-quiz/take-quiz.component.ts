@@ -15,7 +15,7 @@ import { Result } from 'src/app/model/result';
 export class TakeQuizComponent implements OnInit {
 
   questions:Question[]|any=[]
-
+  quizId:number=0
   answer: Answer = new Answer;
    count:number=0
   constructor(private questionService:QuestionService,private resultService:ResultService,private router:Router) { }
@@ -46,13 +46,13 @@ result()
 }
   ngOnInit(): void {
 
+    this.quizId=Number(localStorage.getItem("quizId"))
     console.log(localStorage.getItem("quizId"))
     this.questionService.getQuestion(localStorage.getItem("quizId")).subscribe(
       response=>{
        let responseBody: Response = response;
          this.questions=responseBody.data
           console.log(this.questions)
-          
       })
   }
 

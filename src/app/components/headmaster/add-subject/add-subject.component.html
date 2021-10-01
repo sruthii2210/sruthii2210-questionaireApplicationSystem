@@ -1,0 +1,44 @@
+<br>
+<h3 style="text-align: center;font-size: 20px;"><b><i>Add Subjects</i></b></h3>
+<form [formGroup]="getStudent">
+    <br>
+    <table>
+        <tr>
+            <th>Standard</th>
+            <td><select class="custom-select" style="height: 35px" name="standard" (change)="getStandard()" formControlName="standard" required>
+                <!-- <option></option> -->
+                <!-- <option *ngIf="subjects.length==5 && standard=='I'" >I</option>
+                <option *ngIf="subjects.length!=5 && standard!='I' ">I</option> -->
+                <option [disabled]="subjects.length==5 && standard=='I'">I</option>
+                <option [disabled]="subjects.length==5 && standard=='II'">II</option>
+                <option [disabled]="subjects.length==5 && standard=='III'">III</option>
+                <option [disabled]="subjects.length==5 && standard=='IV'">IV</option>
+                <option [disabled]="subjects.length==5 && standard=='V'">V</option>
+                <option [disabled]="subjects.length==5 && standard=='VI'">VI</option>
+                <option [disabled]="subjects.length==5 && standard=='VII'">VII</option>
+                <option [disabled]="subjects.length==5 && standard=='VIII'">VIII</option>
+                <!-- <option *ngIf="subjects.length==5 && standard=='VIII' ">VIII</option>
+                <option *ngIf="subjects.length!=5 && standard!='VIII' ">VIII</option>
+                <option *ngIf="subjects.length==5 && standard=='IX' ">IX</option>
+                <option *ngIf="subjects.length!=5 && standard!='IX' ">IX</option>
+                <option *ngIf="subjects.length==5 && standard=='X'">X</option>
+                <option *ngIf="subjects.length!=5 && standard!='X' ">X</option> -->
+                <option [disabled]="subjects.length==5 && standard=='IX'">IX</option>
+                <option [disabled]="subjects.length==5 && standard=='X'">X</option>
+                <option [disabled]="subjects.length==5 && standard=='XI'">XI</option>
+                <option [disabled]="subjects.length==5 && standard=='XII'">XII</option>
+            </select></td>
+        </tr>
+        <tr>
+            <th>SubjectCode</th>
+            <td><input  type="text" class="form-control" name="code" formControlName="code" required></td>
+        </tr>
+        <tr>
+            <th>SubjectName</th>
+            <td><input  type="text" class="form-control" name="name" formControlName="name" required></td>
+        </tr>
+        
+    </table>
+    <br>
+    <button [disabled]="subjects.length==5" (click)="add()" class="button btn-info" >AddSubject</button>
+</form>

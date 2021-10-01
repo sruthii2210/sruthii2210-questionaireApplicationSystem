@@ -1,0 +1,21 @@
+<br>
+<h3 style="text-align: center;font-size: 20px;"><b><i>Login Form</i></b></h3><br>
+<form [formGroup]="loginForm">
+    <table>
+        <tr>
+            <th>UserName</th>
+            <td><input type="text" class="form-control" name="loginId" placeholder="Enter id" formControlName="loginId" required></td>
+        </tr>
+        <tr>
+            <th>Password</th>
+            <td><input type="password" class="form-control" name="password" formControlName="password" required></td>
+        </tr>
+        
+        <!-- <tr>
+            <td><button class="button btn-info" (click)="getlogin()">Login</button></td>
+        </tr> -->
+    </table>
+    <br>
+    <button style="width:80px" class="button btn-info" (click)="getlogin()">Login</button>
+</form>
+

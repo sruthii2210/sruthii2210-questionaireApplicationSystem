@@ -1,9 +1,11 @@
 import { Component, OnInit,TemplateRef } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Class } from 'src/app/model/class';
 import { Response } from 'src/app/model/response';
 import { Student } from 'src/app/model/student';
 import { StudentService } from 'src/app/services/student.service';
-
+import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
+import { UpdateProfileComponent } from '../update-profile/update-profile.component';
 
 
 @Component({
@@ -15,10 +17,11 @@ export class ViewProfileComponent implements OnInit {
 
   student:Student=new Student
   classRoom:Class=new Class
-  constructor(private studentService:StudentService) { }
+  constructor(private studentService:StudentService,private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    let rollNo=4001
+    let rollNo:number=4001
+    localStorage.setItem("studentId",String(rollNo));
     this.studentService.getStudentById(rollNo).subscribe(
       response=>{
         let responseBody:Response=response
@@ -30,7 +33,12 @@ export class ViewProfileComponent implements OnInit {
 
 update()
   {
-    document.getElementById("profile")?.style.display
+      const dialogConfig = new MatDialogConfig();
+      dialogConfig.disableClose = true;
+      dialogConfig.autoFocus = true;
+      this.dialog.open(UpdateProfileComponent,dialogConfig)
+     
   }
+
 
 }
