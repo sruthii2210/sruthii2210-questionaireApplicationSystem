@@ -72,13 +72,13 @@ export class StudentViewQuizComponent implements OnInit {
       }
     )
   }
- 
   takeTest(autoId:any)
   {
     console.log(autoId)
     localStorage.setItem("quizId",autoId);
-    this.router.navigate(['takequiz']);
+    this.router.navigate(['/studentdashboard/takequiz']);
   }
+
   onSubmit() {
     localStorage.setItem("subjectCode",this.getClassDetails.get('code')?.value)
     this.teacherSubject.getTeacherSubject(this.student.classRoom?.roomNo, this.getClassDetails.get('code')?.value).subscribe(

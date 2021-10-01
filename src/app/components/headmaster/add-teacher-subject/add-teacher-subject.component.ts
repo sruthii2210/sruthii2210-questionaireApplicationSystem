@@ -36,6 +36,8 @@ export class AddTeacherSubjectComponent implements OnInit {
         let responseBody: Response = response
         this.subjects = responseBody.data
         console.log(this.subjects)
+        if(this.subjects.length==0)
+        window.alert("No subjects are alloted for this class..First add subjects!");
       }, error => { window.alert(error.error.statusText) }
     )
   }

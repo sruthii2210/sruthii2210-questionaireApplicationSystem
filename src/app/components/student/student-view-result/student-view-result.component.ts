@@ -38,7 +38,6 @@ export class StudentViewResultComponent implements OnInit {
   subjectCodes: String[] = []
   teacherIds: number[] = []
 
-
   constructor(private classService: ClassService, private subService: SubjectService,
     private teacherSubject: TeacherSubjectService, private quizService: QuizService,
     private router: Router, private studentService: StudentService, private questionService: QuestionService, private resultService: ResultService) { }
@@ -91,8 +90,14 @@ export class StudentViewResultComponent implements OnInit {
                 response => {
                   let responseBody: Response = response
                   this.teacherSubjects = responseBody.data
-                  this.teacherIds.push(Number(this.teacherSubjects.teacherId))
+
+                  if (this.teacherSubjects != null)
+                    this.teacherIds.push(Number(this.teacherSubjects.teacherId))
+                  else
+                    this.teacherIds.push(0)
+
                   console.log(this.teacherIds)
+                  // console.log(i)
                   this.quizService.getQuiz(this.teacherIds[i], this.subjectCodes[i]).subscribe(
                     response => {
                       let responseBody: Response = response
@@ -102,47 +107,61 @@ export class StudentViewResultComponent implements OnInit {
                       console.log(this.teacherIds[i])
                       for (let i in this.quizDetails) {
                         quizIds.push(Number(this.quizDetails[i].autoId))
-                        console.log(this.quizDetails[i].autoId)
+                        //console.log(this.quizDetails[i].autoId)
                       }
-                      console.log(this.quizDetails)
+                      console.log(quizIds)
 
                       for (let j = 0; j < quizIds.length; j++) {
-                        console.log(quizIds)
+                        //console.log(quizIds)
 
                         this.questionService.getQuestionCount(quizIds[j]).subscribe(
                           response => {
                             let count = 0
                             let responseBody: Response = response
                             count = responseBody.data
-                            console.log(count)
-                            //console.log(quizIds[j])
+                            //console.log(count)
+
+                            console.log(quizIds[j])
                             this.resultService.getResultByRollNo(this.getClassDetails.get('rollNo')?.value, quizIds[j])
                               .subscribe(response => {
                                 console.log(quizIds[j])
                                 let responseBody: Response = response
                                 this.resultDetails = responseBody.data
                                 console.log(this.resultDetails)
-                                let score: any = this.resultDetails.score
-                                let calculate = score * 100
-                                console.log(calculate)
-                                this.resultDetails.score = calculate / count
-                                console.log(this.resultDetails.score)
-                                this.quizOne[i]= Number(this.resultDetails.score)
-                                console.log(this.quizOne[i])
-                                console.log("i is " + i + " j is " + j)
+                                if (this.resultDetails != null) {
+                                  let score: any = this.resultDetails.score
+                                  let calculate = score * 100
+
+                                  this.resultDetails.score = calculate / count
+                                  //console.log(this.resultDetails.score)
+                                  if (j == 0)
+                                    this.quizOne[i] = Number(this.resultDetails.score)
+                                  if (j == 1)
+                                    this.quizTwo[i] = Number(this.resultDetails.score)
+                                  if (j == 2)
+                                    this.quizThree[i] = Number(this.resultDetails.score)
+
+                                  console.log(this.quizOne)
+                                  console.log("i is " + i + " j is " + j)
+                                }
                               })
                           }
                         )
 
-                        console.log("At end..")
                       }
+
                     }
+
                   )
+
                 }, error => {
                   window.alert(error.error.statusText)
                 }
+
               )
             }
+            console.log("At end..")
+
           }, error => {
             window.alert(error.error.statusText)
           }

@@ -140,32 +140,31 @@ export class StudentHomeComponent implements OnInit {
                             this.expired = this.expired + 1
                           }
 
-                          this.resultService.getResult(quizDetails[i].autoId).subscribe(
+                          this.resultService.getResultByRollNo(this.getClassDetails.get('rollNo')?.value,quizDetails[i].autoId).subscribe(
                             response => {
 
                               let index: any = 0
-                              let resultDetails: ResultModel[] = []
+                              let resultDetails: Result[] = []
                               let responseBody: Response = response
                               resultDetails = responseBody.data
                               console.log(resultDetails)
-                              let studentIds = []
+                              // let studentIds = []
+                              // for (index in resultDetails) {
+                              //   studentIds.push(resultDetails[index].student?.rollNo);
+                              // }
+                              // console.log(studentIds)
 
+                              // let rollNo: number = Number(localStorage.getItem("rollNo"))
+                              // index = 0
 
-                              for (index in resultDetails) {
-                                studentIds.push(resultDetails[index].rollNo);
-                              }
-                              console.log(studentIds)
-
-                              let rollNo: number = Number(localStorage.getItem("rollNo"))
-                              index = 0
-                              
-                              for(let index=0;index<resultDetails.length;i++){
-                                  console.log(studentIds[index]+" "+rollNo)
-                              if (studentIds[index] == rollNo && resultDetails[index].quizId == quizDetails[i].autoId) {
-                                this.completed = this.completed + 1
-                                this.completedQuiz[i] = this.completed
-                                this.pendingQuiz[i] = this.pendingQuiz[i] - 1
-                                console.log(quizDetails[i].autoId)}
+                              for (let index = 0; index < resultDetails.length; index++) {
+                               console.log(resultDetails[index].student?.rollNo)
+                                if (resultDetails[index].student?.rollNo == this.getClassDetails.get('rollNo')?.value && resultDetails[index].quiz?.autoId == quizDetails[i].autoId) {
+                                  this.completed = this.completed + 1
+                                  this.completedQuiz[index] = this.completed
+                                  this.pendingQuiz[index] = this.pendingQuiz[i] - 1
+                                  console.log(quizDetails[index].autoId)
+                                }
                               }
 
                             })

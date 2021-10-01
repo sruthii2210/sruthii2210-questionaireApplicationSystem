@@ -18,10 +18,11 @@ import { Student } from 'src/app/model/student';
 export class StaffViewStudentComponent implements OnInit {
 
   subjects: Subject[] = []
-  standards:string[]=[]
-  sections:string[]=[]
-  students:Student[]=[]
-  
+  standards: string[] = []
+  sections: string[] = []
+  students: Student[] = []
+  // subjects=new Set
+
 
   constructor(private subjectService: SubjectService, private teacherSubject: TeacherSubjectService,
     private classService: ClassService, private studentService: StudentService) { }
@@ -30,7 +31,7 @@ export class StaffViewStudentComponent implements OnInit {
     {
       staffId: new FormControl(''),
       code: new FormControl(''),
-      standardSection:new FormControl('')
+      standardSection: new FormControl('')
     }
   )
   getCourse() {
@@ -53,41 +54,41 @@ export class StaffViewStudentComponent implements OnInit {
 
         for (let i = 0; i < teacherSubject.length; i++) {
           this.classService.getClassByRoomNo(teacherSubject[i].roomNo).subscribe(
-            response=>{
-              let classDetails:Class=new Class
-              let responseBody:Response=response
-              classDetails=responseBody.data
+            response => {
+              let classDetails: Class = new Class
+              let responseBody: Response = response
+              classDetails = responseBody.data
               this.standards.push(String(classDetails.standard))
               this.sections.push(String(classDetails.section))
             }
           )
         }
+        this.standards=[]
       }, error => { window.alert(error.error.statusText) }
     )
   }
-  getStudent()
-  {
-    let standardSection=this.viewStudent.get('standardSection')?.value
+  getStudent() {
+    let standardSection = this.viewStudent.get('standardSection')?.value
     console.log(standardSection)
-   let standard=[]
-   let roomNo:number=0
-   for(let i=0;i<2;i++)
-        standard=standardSection.split("-")
-   
-        console.log(standard)
-    this.classService.getClass(standard[0],standard[1]).subscribe(
-      response=>{
-        let responseBody:Response=response
-        roomNo=responseBody.data.roomNo
-       
+    let standard = []
+    let roomNo: number = 0
+    for (let i = 0; i < 2; i++)
+      standard = standardSection.split("-")
+
+    console.log(standard)
+    this.classService.getClass(standard[0], standard[1]).subscribe(
+      response => {
+        let responseBody: Response = response
+        roomNo = responseBody.data.roomNo
+
         this.studentService.getStudent(roomNo).subscribe(
-          response=>{
-            let responseBody:Response=response
-            this.students=responseBody.data
+          response => {
+            let responseBody: Response = response
+            this.students = responseBody.data
             console.log(this.students)
-          },error=>{window.alert(error.error.statusText)}
+          }, error => { window.alert(error.error.statusText) }
         )
-      },error=>{window.alert(error.error.statusText)}
+      }, error => { window.alert(error.error.statusText) }
     )
   }
   ngOnInit(): void {

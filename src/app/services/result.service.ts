@@ -23,4 +23,9 @@ export class ResultService {
   {
     return this.http.get('http://localhost:8086/api/result/'+`${rollNo}`+'/'+`${quizId}`); 
   }
+  getResultByCode(rollNo:any,code:any):Observable<any>
+  {
+    return this.http.get('http://localhost:8086/api/result/rollNo/'+`${rollNo}`+'/'+`${code}`)
+  }
 }
+

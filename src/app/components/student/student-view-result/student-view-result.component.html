@@ -9,11 +9,11 @@
         </tr>
         <tr>
             <td>Standard</td>
-            <td><input type="text" class="form-control" formControlName="standard" value={{student.classRoom?.standard}} name="standard" required></td>
+            <td><input type="text" class="form-control" formControlName="standard" value={{student.classRoom?.standard}} name="standard" readonly=true required></td>
         </tr>
         <tr>
             <td>Section</td>
-            <td><input type="text" class="form-control" formControlName="section" value={{student.classRoom?.section}} name="section" required></td>
+            <td><input type="text" class="form-control" formControlName="section" value={{student.classRoom?.section}} name="section" readonly=truerequired></td>
         </tr>
         <tr>
             <button  (click)=getCourse() class="button btn-info">Get Result</button>
@@ -30,7 +30,7 @@
             <th>Quiz3</th>
             <th>TotalScore</th>
         </tr>
-        <tr *ngFor="let subject of subjectDetails;let i=index">
+        <tr *ngFor="let subject of subjectDetails;let i=index;">
             <td>{{subject.code}}</td>
             <td>{{quizOne[i]}}</td>
             <td>{{quizTwo[i]}}</td>

@@ -50,7 +50,7 @@ const routes: Routes = [
   //   {path: 'studentviewquiz', component: StudentViewQuizComponent},
   //    { path: 'takequiz', component: TakeQuizComponent },
   //   { path: 'studenthome', component: StudentHomeComponent },
-     { path: 'takequiz', component: TakeQuizComponent},
+    //  { path: 'takequiz', component: TakeQuizComponent},
   { path: 'staffviewresult', component: StaffViewResultComponent },
   {path:'addteachersubject',component:AddTeacherSubjectComponent},
   // {path:'studentviewresult',component:StudentViewResultComponent},
