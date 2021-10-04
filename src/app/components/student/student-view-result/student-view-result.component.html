@@ -5,7 +5,7 @@
     <table class="table table-hover table-sm">
         <tr>
             <td>RegisterNo</td>
-            <td><input type="number" class="form-control" formControlName="rollNo" name="rollNo" (change)="getStudent()" required></td>
+            <td><input type="number" class="form-control" formControlName="rollNo" name="rollNo"  value={{student.rollNo}} readonly=true required></td>
         </tr>
         <tr>
             <td>Standard</td>
@@ -21,21 +21,24 @@
     </table>
 </form>
 
+<br>
 <form *ngIf="subjectDetails.length>0">
-    <table class="table table-hover table-sm">
+    <table style="width:40%;margin-left: 450px; " class="table table-hover table-sm">
         <tr>
             <th>Subjects</th>
             <th>Quiz1</th>
             <th>Quiz2</th>
             <th>Quiz3</th>
             <th>TotalScore</th>
+            <th>AverageScore</th>
         </tr>
-        <tr *ngFor="let subject of subjectDetails;let i=index;">
+        <tr class="styleTxt" *ngFor="let subject of subjectDetails;let i=index;">
             <td>{{subject.code}}</td>
-            <td>{{quizOne[i]}}</td>
-            <td>{{quizTwo[i]}}</td>
-            <td>{{quizThree[i]}}</td>
-            <td>{{quizOne[i]+quizTwo[i]+quizThree[i]}}</td>
+            <td>{{quizNames[i]}}:{{quizOne[i]|number:'1.0-0'}}</td>
+            <td>{{quizTwo[i]|number:'1.0-0'}}</td>
+            <td>{{quizThree[i]|number:'1.0-0'}}</td>
+            <td>{{quizOne[i]+quizTwo[i]+quizThree[i]|number:'1.0-0'}}</td>
+            <td>{{total(quizOne[i],quizTwo[i],quizThree[i])|number:'1.0-0'}}</td>
         </tr>
     </table>
 </form>

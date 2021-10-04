@@ -45,7 +45,7 @@ export class CreateQuestionComponent implements OnInit {
       window.alert(this.response.statusText)
       
      localStorage.setItem("quesNo",JSON.stringify(this.response.data))
-     this.router.navigate(['createanswer'])
+     this.router.navigate(['staffdashboard/createanswer'])
       
     })
   }

@@ -31,7 +31,9 @@ export class AddClassComponent implements OnInit {
       response=>{
         let responseBody:Response=response
         window.alert(responseBody.statusText)
-      },error=>{window.alert(error.error.statusText)}
+      },error=>{
+        console.log(error)
+        window.alert(error.error.statusText)}
     )
   }
   ngOnInit(): void {

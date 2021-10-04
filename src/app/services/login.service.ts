@@ -25,4 +25,9 @@ export class LoginService {
     return this.http.post(`${this.baseUrl}`+'login/'+`${id}`,login)
   }
 
+  addStudentLogin(id:any,login:any)
+  {
+    return this.http.post(`${this.baseUrl}`+'studentlogin/'+`${id}`,login)
+  }
+
 }

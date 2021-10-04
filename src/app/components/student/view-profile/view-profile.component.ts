@@ -36,7 +36,14 @@ update()
       const dialogConfig = new MatDialogConfig();
       dialogConfig.disableClose = true;
       // dialogConfig.autoFocus = true;
-      this.dialog.open(UpdateProfileComponent,dialogConfig)
+      this.dialog.open(UpdateProfileComponent,{
+        // maxWidth: '100vw',
+        // maxHeight: '100vh',
+        width: '600px',
+        height: '65vh',
+        
+       
+      })
      
   }
 

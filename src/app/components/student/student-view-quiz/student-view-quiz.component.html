@@ -1,23 +1,23 @@
 <!-- <app-student-dashboard></app-student-dashboard>  -->
 <br>
-<h2 style="text-align: center;font-size: 20px;"><i>Enter Details</i></h2>
+<h2 style="text-align: center;font-size: 20px;"><i><b>Get Quiz Details</b></i></h2>
 <form [formGroup]="getClassDetails" (ngSubmit)="onSubmit()">
     <table class="table table-hover table-sm">
         <tr>
             <td>RegisterNo</td>
-            <td><input type="number" class="form-control" formControlName="rollNo" name="rollNo" (change)="getStudent()" required></td>
+            <td><input type="number" class="form-control" formControlName="rollNo" name="rollNo" value={{student.rollNo}} readonly=true required></td>
         </tr>
         <tr>
             <td>Standard</td>
-            <td><input type="text" class="form-control" formControlName="standard" value={{student.classRoom?.standard}} name="standard" required></td>
+            <td><input type="text" class="form-control" formControlName="standard" value={{student.classRoom?.standard}} name="standard" readonly=true required></td>
         </tr>
         <tr>
             <td>Section</td>
-            <td><input type="text" class="form-control" formControlName="section" value={{student.classRoom?.section}} name="section" required></td>
+            <td><input type="text" class="form-control" formControlName="section" value={{student.classRoom?.section}} name="section"  readonly=true required></td>
         </tr>
         <tr>
             <td>ClassNo</td>
-            <td><input type="number" class="form-control"  value={{student.classRoom?.roomNo}} formControlName="roomNo" name="roomNo"></td>
+            <td><input type="number" class="form-control"  value={{student.classRoom?.roomNo}} formControlName="roomNo" readonly=true name="roomNo"></td>
         </tr>
         <tr>
             <td>Courses</td>
@@ -30,8 +30,13 @@
         </tr>
         <tr>
             <td></td>
-            <td><input type="submit" value="Get Quiz" class="btn btn-primary"></td>
+            <td><input type="submit" style="margin-left: 2cm;"  value="Get Quiz"  class="btn btn-primary">
+                <!-- <td><input type="submit"  style="margin-left: 4cm;" value="Get Quiz" *ngIf="quizDetails.length==0"  class="btn btn-primary"> -->
+               
         </tr>
+        
+             
+        
     </table>
 
    </form>
@@ -53,7 +58,8 @@
             <div>
             <small style="margin-left: 12cm"  *ngIf="quiz?.quizDate<today" class="text-danger">
                 * QuizDate is expired, Not able to take quiz..
-            </small>  
+            </small> 
+           
         </div>
     
         </tr>

@@ -22,6 +22,7 @@ export class ViewCourseQuizComponent implements OnInit {
   questions:Question[]|any
   quizList:Quiz[]|any
   quizLength:number=0
+  staffId=localStorage.getItem("staffId")
   constructor(private subjectService:SubjectService,private quizService:QuizService,private questionService:QuestionService,private router:Router) {
    }
    StaffCourseForm=new FormGroup(
@@ -73,7 +74,7 @@ export class ViewCourseQuizComponent implements OnInit {
     //   })
 
     localStorage.setItem("id",id)
-    this.router.navigate(['viewquestion'])
+    this.router.navigate(['staffdashboard/viewquestion'])
   }
 
 

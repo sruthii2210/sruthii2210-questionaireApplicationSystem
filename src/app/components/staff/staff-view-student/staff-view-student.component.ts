@@ -8,7 +8,6 @@ import { TeacherSubjectModel } from 'src/app/model/teacher-subject-model';
 import { StudentService } from 'src/app/services/student.service';
 import { ClassService } from 'src/app/services/class.service';
 import { Class } from 'src/app/model/class';
-import { ThisReceiver } from '@angular/compiler';
 import { Student } from 'src/app/model/student';
 @Component({
   selector: 'app-staff-view-student',
@@ -18,14 +17,19 @@ import { Student } from 'src/app/model/student';
 export class StaffViewStudentComponent implements OnInit {
 
   subjects: Subject[] = []
+  subject: String[] = []
+  subjectCode: String[] = []
   standards: string[] = []
   sections: string[] = []
   students: Student[] = []
+  staffId=localStorage.getItem("staffId")
   // subjects=new Set
 
 
   constructor(private subjectService: SubjectService, private teacherSubject: TeacherSubjectService,
-    private classService: ClassService, private studentService: StudentService) { }
+    private classService: ClassService, private studentService: StudentService) {
+     
+     }
 
   viewStudent = new FormGroup(
     {
@@ -35,17 +39,26 @@ export class StaffViewStudentComponent implements OnInit {
     }
   )
   getCourse() {
-    console.log(this.viewStudent.get('staffId')?.value)
-    this.subjectService.getCourseById(this.viewStudent.get('staffId')?.value).subscribe(
+    //console.log(this.viewStudent.get('staffId')?.value)
+    this.subjectService.getCourseById(localStorage.getItem("staffId")).subscribe(
       response => {
+        
         let responseBody: Response = response;
         this.subjects = responseBody.data
         console.log(this.subjects)
+        //let a = []
+        for(let i in this.subjects)
+        {
+          this.subjectCode.push(String(this.subjects[i].code))
+        }
+         this.subjectCode.splice(0, this.subjectCode.length, ...(new Set(this.subjectCode)))
+        console.log(this.subjectCode)
       }
     )
-  }
+
+    }
   getDetails() {
-    this.teacherSubject.getTeacherSubjectById(this.viewStudent.get('staffId')?.value, this.viewStudent.get('code')?.value).subscribe(
+    this.teacherSubject.getTeacherSubjectById(localStorage.getItem("staffId"), this.viewStudent.get('code')?.value).subscribe(
       response => {
         let teacherSubject: TeacherSubjectModel[] = []
         let responseBody: Response = response
@@ -92,6 +105,8 @@ export class StaffViewStudentComponent implements OnInit {
     )
   }
   ngOnInit(): void {
+    
+
   }
 
 }

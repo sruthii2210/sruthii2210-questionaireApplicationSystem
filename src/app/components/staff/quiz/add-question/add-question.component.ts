@@ -88,8 +88,8 @@ add()
                       console.log(this.questions[i].question);
                        console.log(this.questions[i].questionNo);
                        localStorage.setItem("quesNo", this.questions[i].questionNo);
-                       window.alert(this.response.statusText);
-                      this.router.navigate(['createanswer']);
+                      
+                      this.router.navigate(['staffdashboard/createanswer']);
                     }
                }
               }

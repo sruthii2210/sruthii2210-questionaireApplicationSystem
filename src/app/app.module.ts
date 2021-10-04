@@ -34,7 +34,8 @@ import { AddSubjectComponent } from './components/headmaster/add-subject/add-sub
 import { AddTeacherSubjectComponent } from './components/headmaster/add-teacher-subject/add-teacher-subject.component';
 import { StaffLoginCredentialsComponent } from './components/staff/staff-login-credentials/staff-login-credentials.component';
 import { StaffViewStudentComponent } from './components/staff/staff-view-student/staff-view-student.component';
-
+import { StudentLoginCredentialsComponent } from './components/student/student-login-credentials/student-login-credentials.component';
+import { SidebarModule } from 'ng-sidebar';
 // import { ModalModule } from 'ngx-bootstrap';
 
 
@@ -69,6 +70,7 @@ import { StaffViewStudentComponent } from './components/staff/staff-view-student
     AddTeacherSubjectComponent,
     StaffLoginCredentialsComponent,
     StaffViewStudentComponent,
+    StudentLoginCredentialsComponent,
     
     
   ],
@@ -80,6 +82,7 @@ import { StaffViewStudentComponent } from './components/staff/staff-view-student
     FormsModule,
     BrowserAnimationsModule,
     MatDialogModule,
+    SidebarModule.forRoot(),
     
     
     // ModalModule.forRoot()

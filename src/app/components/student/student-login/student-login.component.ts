@@ -28,6 +28,7 @@ export class StudentLoginComponent implements OnInit {
         let responseBody: Response = response
         this.loginDetails = responseBody.data
         console.log(this.loginDetails)
+        localStorage.setItem("loginId",this.loginForm.get('loginId')?.value)
         if(this.loginDetails.password==this.loginForm.get('password')?.value)
         {
           window.alert("Logged in successfully...")
@@ -40,6 +41,10 @@ export class StudentLoginComponent implements OnInit {
         }
       },error=>{window.alert(error.error.statusText)}
     )
+  }
+  register()
+  {
+    this.router.navigate(['studentlogincredentials'])
   }
   ngOnInit(): void {
   }

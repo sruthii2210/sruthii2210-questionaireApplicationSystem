@@ -4,22 +4,22 @@
     <table class="table table-hover table-sm">
         <tr>
             <td>RegisterNo</td>
-            <td><input type="number" class="form-control" formControlName="rollNo" name="rollNo" (change)="getStudent()" required></td>
+            <td><input type="number" class="form-control" formControlName="rollNo" name="rollNo" value={{student.rollNo}} (change)="getStudent()" required></td>
         </tr>
         <tr>
             <td>Standard</td>
-            <td><input type="text" class="form-control" formControlName="standard" value={{student.classRoom?.standard}} name="standard" required></td>
+            <td><input type="text" class="form-control" formControlName="standard" value={{student.classRoom?.standard}} name="standard" readonly=true required></td>
         </tr>
         <tr>
             <td>Section</td>
-            <td><input type="text" class="form-control" formControlName="section" value={{student.classRoom?.section}} name="section"  required></td>
+            <td><input type="text" class="form-control" formControlName="section" value={{student.classRoom?.section}} name="section" readonly=true required></td>
         </tr>
     </table>
-    <button  (click)=getClass() class="button btn-info">Get QuizDetails</button>
+    <button  (click)=getClass() style="margin-left: 4cm;" class="button btn-info">Get QuizDetails</button>
 </form>
 <br>
 <div *ngIf="subjects.length>0">
-<form>
+<form style="margin-left: 300px;">
     <table class="table table-hover table-sm">
         <tr>
             <th>Subjects</th>

@@ -3,12 +3,14 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Class } from 'src/app/model/class';
+import { Question } from 'src/app/model/question';
 import { Quiz } from 'src/app/model/quiz';
 import { Response } from 'src/app/model/response';
 import { Student } from 'src/app/model/student';
 import { Subject } from 'src/app/model/subject';
 import { TeacherSubject } from 'src/app/model/teacher-subject';
 import { ClassService } from 'src/app/services/class.service';
+import { QuestionService } from 'src/app/services/question.service';
 import { QuizService } from 'src/app/services/quiz.service';
 import { StudentService } from 'src/app/services/student.service';
 import { SubjectService } from 'src/app/services/subject.service';
@@ -26,16 +28,28 @@ export class StudentViewQuizComponent implements OnInit {
   teacherSub: TeacherSubject = new TeacherSubject;
   quizDetails: Quiz[] = []
   student: Student = new Student;
+  questions:Question[]=[]
   subjectDetails: Subject[] =[]
   roomNo: number = 0
   today: string="";
   constructor(private classService: ClassService, private subService: SubjectService, 
     private teacherSubject: TeacherSubjectService, private quizService: QuizService,
-    private router:Router,private studentService:StudentService) {
+    private router:Router,private studentService:StudentService,private questionService:QuestionService) {
   }
 
 
   ngOnInit(): void {
+    this.studentService.getStudentById(localStorage.getItem("loginId")).subscribe(
+      response => {
+
+        let responseBody: Response = response
+        this.student = responseBody.data
+        console.log(this.student)
+
+      }, error => {
+        window.alert(error.error.statusText)
+      }
+    )
   }
 
   getClassDetails = new FormGroup(
@@ -48,19 +62,19 @@ export class StudentViewQuizComponent implements OnInit {
     }
   )
 
-  getStudent() {
-    this.studentService.getStudentById(this.getClassDetails.get('rollNo')?.value).subscribe(
-      response => {
+  // getStudent() {
+  //   this.studentService.getStudentById(localStorage.getItem("loginId")).subscribe(
+  //     response => {
 
-        let responseBody: Response = response
-        this.student = responseBody.data
-        console.log(this.student)
+  //       let responseBody: Response = response
+  //       this.student = responseBody.data
+  //       console.log(this.student)
 
-      }, error => {
-        window.alert(error.error.statusText)
-      }
-    )
-  }
+  //     }, error => {
+  //       window.alert(error.error.statusText)
+  //     }
+  //   )
+  // }
 
   getCourse() {
     localStorage.setItem("rollNo",this.getClassDetails.get('rollNo')?.value)
@@ -75,6 +89,13 @@ export class StudentViewQuizComponent implements OnInit {
   takeTest(autoId:any)
   {
     console.log(autoId)
+    this.questionService.getQuestion(localStorage.getItem("quizId")).subscribe(
+      response=>{
+       let responseBody: Response = response;
+         this.questions=responseBody.data
+          console.log(this.questions)
+        //  localStorage.setItem("questions",JSON.stringify(this.questions))
+      })
     localStorage.setItem("quizId",autoId);
     this.router.navigate(['/studentdashboard/takequiz']);
   }
@@ -94,6 +115,11 @@ export class StudentViewQuizComponent implements OnInit {
             this.quizDetails = this.response.data
             //this.quizLength = this.quizDetails.length
             console.log(this.quizDetails)
+            if(this.quizDetails.length==0)
+            {
+            window.alert("Quiz is not created yet..")
+          
+            }
           }
         )
 

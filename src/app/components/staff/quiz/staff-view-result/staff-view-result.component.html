@@ -4,7 +4,7 @@
     <table class="table table-hover table-sm">
         <tr>
             <td>StaffId</td>
-            <td><input  type="number" name="staffId" class="form-control" formControlName="staffId" ></td>
+            <td><input  type="number" name="staffId" class="form-control" formControlName="staffId" [(ngModel)]="staffId" [value]="staffId" readonly=true ></td>
         </tr>
         <tr>
         <th>Course</th>

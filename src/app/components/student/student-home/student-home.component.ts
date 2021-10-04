@@ -5,7 +5,6 @@ import { Class } from 'src/app/model/class';
 import { Quiz } from 'src/app/model/quiz';
 import { Response } from 'src/app/model/response';
 import { Result } from 'src/app/model/result';
-import { ResultModel } from 'src/app/model/result-model';
 import { Student } from 'src/app/model/student';
 import { Subject } from 'src/app/model/subject';
 import { TeacherSubjectModel } from 'src/app/model/teacher-subject-model';
@@ -40,7 +39,21 @@ export class StudentHomeComponent implements OnInit {
   expired: number = 0
   completed: number = 0
 
+  ngOnInit(): void {
 
+    this.studentService.getStudentById(localStorage.getItem("loginId")).subscribe(
+      response => {
+
+        let responseBody: Response = response
+        this.student = responseBody.data
+        console.log(this.student)
+
+      }, error => {
+        window.alert(error.error.statusText)
+      }
+    )
+
+  }
   constructor(private classService: ClassService, private subjectService: SubjectService,
     private quizService: QuizService, private teacherSubjectService: TeacherSubjectService,
     private resultService: ResultService, private studentService: StudentService) { }
@@ -84,13 +97,13 @@ export class StudentHomeComponent implements OnInit {
             for (let i = 0; i < this.subjects.length; i++) {
 
               console.log("hello")
-              this.available = 0
-              this.completed = 0
-              this.expired = 0
+              // this.available = 0
+              // this.completed = 0
+              // this.expired = 0
               this.totalQuiz[i] = 0
-              this.pendingQuiz[i] = this.available
-              this.completedQuiz[i] = this.completed
-              this.ExpiredQuiz[i] = this.expired
+              this.pendingQuiz[i] = 0
+              this.completedQuiz[i] = 0
+              this.ExpiredQuiz[i] =0
 
               this.teacherSubjectService.getTeacherId(this.classDetails.roomNo, this.subjects[i].code).subscribe(
                 response => {
@@ -106,19 +119,20 @@ export class StudentHomeComponent implements OnInit {
                       let responseBody: Response = response
                       quizDetails = responseBody.data
                       console.log(quizDetails)
-
-
                       this.totalQuiz[i] = quizDetails.length
 
                       if (quizDetails.length == 0) {
                         this.pendingQuiz[i] = 0;
                         this.ExpiredQuiz[i] = 0;
-
+                        this.completedQuiz[i]=0;
                       }
                       else {
                         this.available = 0;
                         this.expired = 0;
-
+                        this.completed=0;
+                        // this.pendingQuiz=[0,0,0,0,0]
+                        // this.completedQuiz=[0,0,0,0,0]
+                        // this.ExpiredQuiz=[0,0,0,0,0]
                         var d = new Date(),
                           month = '' + (d.getMonth() + 1),
                           day = '' + d.getDate(),
@@ -131,48 +145,51 @@ export class StudentHomeComponent implements OnInit {
 
                         let today = [year, month, day].join('-');
 
-                        for (let i = 0; i < quizDetails.length; i++) {
+                         
+                        for (let j = 0; j < quizDetails.length; j++) {
 
-                          if (quizDetails[i].quizDate > today) {
-                            this.available = this.available + 1
-                          }
-                          else {
-                            this.expired = this.expired + 1
-                          }
+                          console.log("Quiz id is "+quizDetails[j].autoId)
+                          if (quizDetails[j].quizDate >= today) {
 
-                          this.resultService.getResultByRollNo(this.getClassDetails.get('rollNo')?.value,quizDetails[i].autoId).subscribe(
-                            response => {
-
-                              let index: any = 0
-                              let resultDetails: Result[] = []
-                              let responseBody: Response = response
-                              resultDetails = responseBody.data
-                              console.log(resultDetails)
-                              // let studentIds = []
-                              // for (index in resultDetails) {
-                              //   studentIds.push(resultDetails[index].student?.rollNo);
-                              // }
-                              // console.log(studentIds)
-
-                              // let rollNo: number = Number(localStorage.getItem("rollNo"))
-                              // index = 0
-
-                              for (let index = 0; index < resultDetails.length; index++) {
-                               console.log(resultDetails[index].student?.rollNo)
-                                if (resultDetails[index].student?.rollNo == this.getClassDetails.get('rollNo')?.value && resultDetails[index].quiz?.autoId == quizDetails[i].autoId) {
-                                  this.completed = this.completed + 1
-                                  this.completedQuiz[index] = this.completed
-                                  this.pendingQuiz[index] = this.pendingQuiz[i] - 1
-                                  console.log(quizDetails[index].autoId)
+                            
+                            this.resultService.getResultByRollNo(localStorage.getItem("loginId"),quizDetails[j].autoId).subscribe(
+                              response=>{
+                                let responseBody:Response=response
+                                let resultDetails:Result[]=[]
+                                resultDetails=responseBody.data
+                                let count=0
+                                
+                                if(resultDetails.length>0)
+                                {
+                                  // this.completed=this.completed+1;
+                                  this.completedQuiz[i]=this.completedQuiz[i]+1
+                                  console.log(" i is "+i+" completed quiz: "+this.completedQuiz[i])
                                 }
+                                  else
+                                  {
+                                  this.available=this.available+1;
+                                  count++;
+                                  this.pendingQuiz[i] = this.pendingQuiz[i]+1;
+                                  console.log(count)
+                                  console.log(" i is "+i+" pendingquiz: "+this.pendingQuiz[i])
+                                  }
                               }
-
-                            })
+                            )
+                          }
+                          
+                          else {
+                           // this.expired = this.expired + 1
+                            this.ExpiredQuiz[i] = this.ExpiredQuiz[i]+1;
+                            console.log(" i is "+i+" expiredquiz: "+this.ExpiredQuiz[i])
+                          }
+                          
+                          // this.available=0;
+                          // this.expired=0;
+                          // this.completed=0
                         }
 
-                        this.pendingQuiz[i] = this.available;
-                        //  this.completedQuiz[i]=this.completed
-                        this.ExpiredQuiz[i] = this.expired;
+                      
+                        
 
                       }
                     }
@@ -187,8 +204,6 @@ export class StudentHomeComponent implements OnInit {
       }
     )
   }
-  ngOnInit(): void {
-
-  }
+  
 
 }

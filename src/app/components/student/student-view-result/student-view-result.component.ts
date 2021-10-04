@@ -31,12 +31,14 @@ export class StudentViewResultComponent implements OnInit {
   teacherSubjects: TeacherSubject = new TeacherSubject;
   quizDetails: Quiz[] = []
   student: Student = new Student;
-  resultDetails: Result = new Result;
+  resultDetails: Result[] = [];
   quizOne = new Array(6);
   quizTwo = new Array(6);
   quizThree = new Array(6);
   subjectCodes: String[] = []
   teacherIds: number[] = []
+  quizNames:String[]=[]
+ loginId=localStorage.getItem("loginId")
 
   constructor(private classService: ClassService, private subService: SubjectService,
     private teacherSubject: TeacherSubjectService, private quizService: QuizService,
@@ -52,7 +54,7 @@ export class StudentViewResultComponent implements OnInit {
   )
 
   getStudent() {
-    this.studentService.getStudentById(this.getClassDetails.get('rollNo')?.value).subscribe(
+    this.studentService.getStudentById(localStorage.getItem("loginId")).subscribe(
       response => {
 
         let responseBody: Response = response
@@ -66,15 +68,17 @@ export class StudentViewResultComponent implements OnInit {
   }
   getCourse() {
 
+    
     this.classService.getClass(this.student.classRoom?.standard, this.student.classRoom?.section).subscribe(
       response => {
         let responseBody: Response = response
         this.classDetails = responseBody.data
         console.log(this.classDetails)
 
-        this.quizOne.fill(0)
-        this.quizTwo.fill(0)
-        this.quizThree.fill(0)
+        // this.quizOne.fill(0)
+        // this.quizTwo.fill(0)
+        // this.quizThree.fill(0)
+        
 
         this.subService.getSubject(this.student.classRoom?.standard).subscribe(
           response => {
@@ -85,7 +89,14 @@ export class StudentViewResultComponent implements OnInit {
               this.subjectCodes.push(String(this.subjectDetails[i].code))
             console.log(this.subjectCodes)
 
+
             for (let i = 0; i < this.subjectCodes.length; i++) {
+              this.quizOne[i]=0
+              this.quizTwo[i]=0
+              this.quizThree[i]=0
+             // this.teacherIds=[i]
+              let quizIds: number[] = []
+              //quizIds=[]
               this.teacherSubject.getTeacherId(this.student.classRoom?.roomNo, this.subjectCodes[i]).subscribe(
                 response => {
                   let responseBody: Response = response
@@ -102,16 +113,21 @@ export class StudentViewResultComponent implements OnInit {
                     response => {
                       let responseBody: Response = response
                       this.quizDetails = responseBody.data
-                      let quizIds: number[] = []
+                     
                       console.log(i)
                       console.log(this.teacherIds[i])
                       for (let i in this.quizDetails) {
+                       // this.teacherIds.slice(Number(i),Number(i+1))
+                       //this.teacherIds[i]=0
+                       this.quizNames.push(String(this.quizDetails[i].name))
                         quizIds.push(Number(this.quizDetails[i].autoId))
                         //console.log(this.quizDetails[i].autoId)
                       }
                       console.log(quizIds)
 
                       for (let j = 0; j < quizIds.length; j++) {
+                        let index=0;
+                        index++;
                         //console.log(quizIds)
 
                         this.questionService.getQuestionCount(quizIds[j]).subscribe(
@@ -119,36 +135,38 @@ export class StudentViewResultComponent implements OnInit {
                             let count = 0
                             let responseBody: Response = response
                             count = responseBody.data
-                            //console.log(count)
-
+                            console.log(count)
                             console.log(quizIds[j])
-                            this.resultService.getResultByRollNo(this.getClassDetails.get('rollNo')?.value, quizIds[j])
+                            
+                            this.resultService.getResultByRollNo(localStorage.getItem("loginId"), quizIds[j])
                               .subscribe(response => {
                                 console.log(quizIds[j])
                                 let responseBody: Response = response
                                 this.resultDetails = responseBody.data
                                 console.log(this.resultDetails)
-                                if (this.resultDetails != null) {
-                                  let score: any = this.resultDetails.score
-                                  let calculate = score * 100
-
-                                  this.resultDetails.score = calculate / count
+                                if (this.resultDetails.length>0) {
+                                  let score: number = Number(this.resultDetails[0].score)
+                                  let calculate:number = score * 100
+                                  console.log(calculate)
+                                  this.resultDetails[0].score = calculate / count
                                   //console.log(this.resultDetails.score)
                                   if (j == 0)
-                                    this.quizOne[i] = Number(this.resultDetails.score)
+                                    this.quizOne[i] = Number(this.resultDetails[0].score)
                                   if (j == 1)
-                                    this.quizTwo[i] = Number(this.resultDetails.score)
+                                    this.quizTwo[i] = Number(this.resultDetails[0].score)
                                   if (j == 2)
-                                    this.quizThree[i] = Number(this.resultDetails.score)
+                                    this.quizThree[i] = Number(this.resultDetails[0].score)
 
                                   console.log(this.quizOne)
                                   console.log("i is " + i + " j is " + j)
                                 }
+                               
                               })
                           }
                         )
 
                       }
+                    
 
                     }
 
@@ -172,9 +190,24 @@ export class StudentViewResultComponent implements OnInit {
     )
   }
 
-
+  total(a:number,b:number,c:number)
+  {
+      return (a+b+c)/3
+  }
 
   ngOnInit(): void {
+   
+    this.studentService.getStudentById(localStorage.getItem("loginId")).subscribe(
+      response => {
+
+        let responseBody: Response = response
+        this.student = responseBody.data
+        console.log(this.student)
+
+      }, error => {
+        window.alert(error.error.statusText)
+      }
+    )
   }
 
 }

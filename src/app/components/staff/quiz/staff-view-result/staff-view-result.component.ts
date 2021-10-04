@@ -28,6 +28,7 @@ export class StaffViewResultComponent implements OnInit {
   results:Result[]=[]
   totalScore:number[]=[]
   student: Student = new Student;
+  staffId: number = Number(localStorage.getItem("staffId"))
   constructor(private subjectService: SubjectService, private quizService: QuizService, 
     private router: Router,private resultService:ResultService,
     private questionService:QuestionService) { }
@@ -68,6 +69,8 @@ export class StaffViewResultComponent implements OnInit {
           let responseBody:Response=response
           this.results=responseBody.data
           console.log(this.results)
+          if(this.results.length==0)
+          window.alert("No student yet taken the quiz..")
 
           this.questionService.getQuestionCount(quiz.autoId).subscribe(
             response=>{
@@ -94,6 +97,7 @@ export class StaffViewResultComponent implements OnInit {
       )
   }
   ngOnInit(): void {
+    
   }
 
 }

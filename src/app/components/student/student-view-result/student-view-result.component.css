@@ -1,6 +1,17 @@
-form
+/* form
 {
 	margin-left: 380px;
 	height:auto;
-	width:50%;
+	width:80%;
+} */
+table{
+	margin-left: 490px; 
+	width:25%;
+}
+td{
+	padding:5px;
+}
+
+.styleTxt td{
+	text-align: center;
 }

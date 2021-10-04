@@ -1,71 +1,87 @@
-.bgimage{
-    /* background-image: url('../../assets/staff.jpg');
-    background-repeat: no-repeat;
-    background-size: cover; */
-    width: 100%;
-    height: 590px;
-  }
-  .bg{
+
+
+    .bg{
      
-    background-color: purple;
-    color: white;
-    text-align: center;
-    height: 30px;
-  }
-  ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      width: 200px;
-      height:700px;
-      border:solid 1px black;
-      background-color: gray;
-    }
-    
-    li a {
-      display: block;
-      color:white;
-      font-style: italic;
-      font-size: 18px;
-      padding: 8px 16px;
-      background-color:gray;
-      text-decoration: none;
-    }
-    
-   
-    li a:hover {
-      background-color: #555;
+      background-color: purple;
       color: white;
+      text-align: center;
+      height: 30px;
     }
-
-
-    .sidenav {
-      height:100%;
-      width: 200px;
-      position: fixed;
-       z-index: 1;
-      top: 1;
-      left: 0; 
-      border:solid 1px black;
-      background-color: gray;
-      overflow-x: hidden;
-      padding-top: 20px;
-      margin-top: -0.75px;
+  
+    /* .bgimage{
+      //background-image: url('../../assets/staff.jpg');
+      //background-repeat: no-repeat;
+      //background-size: cover; 
+      width: 100%;
+      height: 590px;
+    }
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        width: 200px;
+        height:700px;
+        border:solid 1px black;
+        background-color: gray;
+      }
       
-    }
+      li a {
+        display: block;
+        color:white;
+        font-style: italic;
+        font-size: 18px;
+        padding: 8px 16px;
+        background-color:gray;
+        text-decoration: none;
+      }
+      
+     
+      li a:hover {
+        background-color: #555;
+        color: white;
+      } */
+  
+  
+      .sidenav {
+        height:100%;
+        width: 200px;
+        position: fixed;
+         z-index: 1;
+        top: 1;
+        left: 0; 
+        border:solid 1px black;
+        background-color: #f1f1f1;
+        overflow-x: hidden;
+        padding-top: 20px;
+        margin-top: -0.75px;
+        
+      }
+  
+  
+      .sidenav a {
+        color:black;
+        text-decoration: none;
+        font-style: italic;
+        font-size: 18px;
+        padding: 8px 16px;
+        background-color: #f1f1f1;
+        display: block;
+       
+      }
+      
+      /* .sidenav a:hover {
+        background-color: #555;
+        color: white;
+       
+      } */
 
-
-    .sidenav a {
-      color:white;
-      text-decoration: none;
-      font-style: italic;
-      font-size: 18px;
-      padding: 8px 16px;
-      background-color:gray;
-      display: block;
-    }
-    
-    .sidenav a:hover {
-      background-color: #555;
-      color: white;
-    }
+     
+      .sidenav a.active {
+        background-color: #04AA6D;
+        color: white;
+      }
+      
+      .sidenav a:hover:not(.active) {
+        background-color: #555;
+        color: white;
+      }

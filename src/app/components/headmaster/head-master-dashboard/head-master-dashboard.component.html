@@ -1,6 +1,6 @@
 <div >
     <div class="bg">
-    <h2 style="text-align: center;font-size: 20px;"><i>Welcome Student!</i></h2>
+    <h2 style="text-align: center;font-size: 20px;height:40px;"><i><b>Welcome</b></i></h2>
     </div>
     <!-- <div>
     <ul>
@@ -14,16 +14,17 @@
     </div> -->
 
     <div class="sidenav">
-      <a routerLink="addclass">AddClass</a>
-      <a routerLink="addstudent">AddStudent</a>
-      <a routerLink="viewstudent">ViewStudent</a>
-      <a routerLink="addteachersubject">StaffAssign</a>
-      <a routerLink="addSubject">AddSubject</a>
+      <a routerLink="addclass" routerLinkActive="active">Add Class</a>
+      <a routerLink="addstudent" routerLinkActive="active">Add Student</a>
+      <a routerLink="viewstudent" routerLinkActive="active">View Student</a>
+      <a routerLink="addteachersubject" routerLinkActive="active">Staff Assign</a>
+      <a routerLink="addsubject" routerLinkActive="active" >Add Subject</a>
+      <a routerLinkActive="active" (click)="logout()">Logout</a>
       <!-- <a routerLink="">Update Profile</a>
-      <a routerLink="">Result</a> --> -->
+      <a routerLink="">Result</a> --> 
     </div>
     
 </div>
-<!-- <router-outlet></router-outlet> -->
+<router-outlet></router-outlet>
 
 

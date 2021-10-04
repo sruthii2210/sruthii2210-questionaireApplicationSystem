@@ -15,6 +15,7 @@ export class ViewQuizComponent implements OnInit {
   response: Response = new Response;
   quizList:Quiz[]|any
   quizLength:number|any;
+  staffId:number=Number(localStorage.getItem("staffId"))
   constructor(private quizService:QuizService,private router:Router) { 
     console.log(this.subCode)
   }
@@ -28,7 +29,7 @@ export class ViewQuizComponent implements OnInit {
   
   onSubmit()
   {
-    this.quizService.getQuiz(this.quizForm.get('staffId')?.value,localStorage.getItem("subCode")).subscribe(
+    this.quizService.getQuiz(localStorage.getItem("staffId"),localStorage.getItem("subCode")).subscribe(
       data=>{
         this.response=data
         this.quizList=this.response.data
@@ -48,7 +49,7 @@ export class ViewQuizComponent implements OnInit {
         {
           localStorage.setItem("quizId",id)
           
-              this.router.navigate(['addquestion'])
+              this.router.navigate(['staffdashboard/addquestion'])
         }
   }
 }

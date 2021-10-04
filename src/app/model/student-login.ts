@@ -1,5 +1,5 @@
 export class StudentLogin {
-    public id?:number;
+    public rollNo?:number;
     public password?:string;
     public confirmPassword?:string;
 }

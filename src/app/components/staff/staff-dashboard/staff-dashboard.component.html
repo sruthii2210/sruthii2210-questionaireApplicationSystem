@@ -3,21 +3,23 @@
     <h2 style="text-align: center;font-size: 20px;"><i>Welcome Staff!</i></h2>
     </div>
     
-    <ul>
+    <!-- <ul>
         <li><a href="">Home</a></li>
         <li><a href="createquiz">Create Quiz</a></li>
         <li><a href="viewcoursequiz">View Quiz</a></li>
         <li><a href="staffviewstudent">View Student</a></li>
         <li><a href="staffviewresult">Result</a></li>
-      </ul>
+      </ul> -->
 
-      <!-- <div class="sidenav">
-        <a routerLink="">Home</a>
-        <a routerLink="/createquiz">Create Quiz</a>
-        <a routerLink="/viewcoursequiz">View Quiz</a>
-        <a routerLink="">View Student</a>
-        <a routerLink="">Result</a>
-      </div> -->
+      <div class="sidenav">
+        <!-- <a routerLink="">Home</a> -->
+        <a  routerLink="createquiz" routerLinkActive="active">Create Quiz</a>
+        <a  routerLink="viewcoursequiz" routerLinkActive="active">View Quiz</a>
+        <a routerLink="staffviewstudent" routerLinkActive="active">View Student</a>
+        <a routerLink="staffviewresult" routerLinkActive="active">Result</a>
+        <a (click)="logout()" routerLinkActive="active">Logout</a>
+
+      </div>
     </div>
     
 <router-outlet></router-outlet>

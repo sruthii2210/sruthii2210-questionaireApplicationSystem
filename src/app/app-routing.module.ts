@@ -23,6 +23,7 @@ import { StaffSignUpComponent } from './components/staff/staff-sign-up/staff-sig
 import { StaffViewStudentComponent } from './components/staff/staff-view-student/staff-view-student.component';
 import { StudentDashboardComponent } from './components/student/student-dashboard/student-dashboard.component';
 import { StudentHomeComponent } from './components/student/student-home/student-home.component';
+import { StudentLoginCredentialsComponent } from './components/student/student-login-credentials/student-login-credentials.component';
 import { StudentLoginComponent } from './components/student/student-login/student-login.component';
 import { StudentViewQuizComponent } from './components/student/student-view-quiz/student-view-quiz.component';
 import { StudentViewResultComponent } from './components/student/student-view-result/student-view-result.component';
@@ -32,43 +33,58 @@ import { ViewProfileComponent } from './components/student/view-profile/view-pro
 
 
 const routes: Routes = [
-  { path: 'staffdashboard', component: StaffDashboardComponent },
-  { path: 'createquiz', component: CreateQuizComponent },
-  { path: 'createquestion', component: CreateQuestionComponent },
-  { path: 'createanswer', component: CreateAnswerComponent },
-  { path: 'viewquiz', component: ViewQuizComponent },
-  { path: 'addquestion', component: AddQuestionComponent },
-  { path: 'viewcoursequiz', component: ViewCourseQuizComponent },
-  { path: 'viewquestion', component: ViewQuestionComponent },
-  { path: 'addstudent', component: AddStudentComponent },
-  { path: 'viewstudent', component: ViewStudentComponent },
-  { path: 'addclass', component: AddClassComponent },
-  {path:'staffsignup',component:StaffSignUpComponent},
-  {path:'addsubject',component:AddSubjectComponent},
-  {path:'headmasterdashboard',component:HeadMasterDashboardComponent},
+
+  {path:'',component:HomeComponent},
+  
+ 
   // { path: 'studentdashboard', component: StudentDashboardComponent},
   //   {path: 'studentviewquiz', component: StudentViewQuizComponent},
   //    { path: 'takequiz', component: TakeQuizComponent },
   //   { path: 'studenthome', component: StudentHomeComponent },
-    //  { path: 'takequiz', component: TakeQuizComponent},
-  { path: 'staffviewresult', component: StaffViewResultComponent },
-  {path:'addteachersubject',component:AddTeacherSubjectComponent},
+  //  { path: 'takequiz', component: TakeQuizComponent},
+  // { path: 'staffviewresult', component: StaffViewResultComponent },
   // {path:'studentviewresult',component:StudentViewResultComponent},
   //{path:'studentviewprofile',component:ViewProfileComponent},
   //{path:'studentupdateprofile',component:UpdateProfileComponent},
+
+
   { path: 'stafflogin', component: StaffLoginComponent },
   { path: 'studentlogin', component: StudentLoginComponent },
-  {path:'stafflogincredentials',component:StaffLoginCredentialsComponent},
-  {path:'staffviewstudent',component:StaffViewStudentComponent},
+  { path: 'stafflogincredentials', component: StaffLoginCredentialsComponent },
+
+  { path: 'headmasterdashboard', component: HeadMasterDashboardComponent,children:[
+    { path: 'addstudent', component: AddStudentComponent },
+  { path: 'viewstudent', component: ViewStudentComponent },
+  { path: 'addclass', component: AddClassComponent },
+  { path: 'staffsignup', component: StaffSignUpComponent },
+  { path: 'addsubject', component: AddSubjectComponent },
+  { path: 'addteachersubject', component: AddTeacherSubjectComponent },
+  ] },
+
+  { path: 'studentlogincredentials', component: StudentLoginCredentialsComponent },
 
   {
     path: 'studentdashboard', component: StudentDashboardComponent, children: [
       { path: 'studentviewquiz', component: StudentViewQuizComponent },
       { path: 'studenthome', component: StudentHomeComponent },
-      { path: 'takequiz', component: TakeQuizComponent},
+      { path: 'takequiz', component: TakeQuizComponent },
       { path: 'studentviewprofile', component: ViewProfileComponent, children: [{ path: 'studentupdateprofile', component: UpdateProfileComponent }] },
       { path: 'studentviewresult', component: StudentViewResultComponent },
 
+    ]
+  },
+
+  {
+    path: 'staffdashboard', component: StaffDashboardComponent, children: [
+      { path: 'createquiz', component: CreateQuizComponent },
+      { path: 'createquestion', component: CreateQuestionComponent },
+      { path: 'createanswer', component: CreateAnswerComponent },
+      { path: 'viewquiz', component: ViewQuizComponent },
+      { path: 'addquestion', component: AddQuestionComponent },
+      { path: 'viewcoursequiz', component: ViewCourseQuizComponent },
+      { path: 'viewquestion', component: ViewQuestionComponent },
+      { path: 'staffviewresult', component: StaffViewResultComponent },
+      { path: 'staffviewstudent', component: StaffViewStudentComponent },
     ]
   },
 

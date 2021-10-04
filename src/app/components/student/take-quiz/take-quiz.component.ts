@@ -14,7 +14,7 @@ import { Result } from 'src/app/model/result';
 })
 export class TakeQuizComponent implements OnInit {
 
-  questions:Question[]|any=[]
+  questions:Question[]=[]
   quizId:number=0
   answer: Answer = new Answer;
    count:number=0
@@ -22,7 +22,7 @@ export class TakeQuizComponent implements OnInit {
 
 check(index:number,option:number)
 {
-  if(option==this.questions[index].answer.crctAns)
+  if(option==Number(this.questions[index].answer?.crctAns))
   {
     this.count=this.count+1;
   }
@@ -34,7 +34,7 @@ result()
   window.alert("Your score is "+this.count);
   let result:Result=new Result;
   result.score=this.count
-  this.resultService.publishResult(localStorage.getItem("rollNo"),localStorage.getItem("subjectCode"),localStorage.getItem("quizId"),result).subscribe(
+  this.resultService.publishResult(localStorage.getItem("loginId"),localStorage.getItem("subjectCode"),localStorage.getItem("quizId"),result).subscribe(
     response=>{
       let responseBody:Response=response;
       console.log(responseBody)
@@ -53,6 +53,7 @@ result()
        let responseBody: Response = response;
          this.questions=responseBody.data
           console.log(this.questions)
+          localStorage.setItem("questions",JSON.stringify(this.questions))
       })
   }
 

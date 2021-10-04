@@ -6,5 +6,5 @@ export class Result {
     public student?:Student;
     public subject?:Subject;
     public quiz?:Quiz;
-    public score:number|any;
+    public score?:number;
 }

@@ -6,11 +6,16 @@
 } */
 table{
 	width:70%;
-	margin-left:100px;
+	margin-left:70px; 
+	
+}
+td{
+	padding: 3px;
 }
 .box
 {
-	width:50%;
-	margin-left: 330px;
+	width:45%;
+	padding: 3px;
+	margin-left: 340px;
 	background-color: lightblue;
 }

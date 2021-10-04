@@ -21,6 +21,7 @@ export class StaffLoginComponent implements OnInit {
     }
   )
   getlogin() {
+    localStorage.setItem("staffId",this.loginForm.get('loginId')?.value)
     this.loginService.getLoginDetails(this.loginForm.get('loginId')?.value).subscribe(
       response => {
         let responseBody: Response = response
@@ -39,6 +40,10 @@ export class StaffLoginComponent implements OnInit {
       },error=>{window.alert(error.error.statusText)}
     )
   }
+  register()
+{
+  this.router.navigate(['stafflogincredentials'])
+}
   ngOnInit(): void {
   }
 
