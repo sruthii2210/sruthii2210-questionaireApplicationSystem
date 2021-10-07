@@ -44,7 +44,7 @@ export class StaffSignUpComponent implements OnInit {
       response=>{
         let responseBody:Response=response
         window.alert(responseBody.statusText)
-        this.addStaff.reset()
+        //this.addStaff.reset()
       },error=>{window.alert(error.error.statusText)}
     )
   }

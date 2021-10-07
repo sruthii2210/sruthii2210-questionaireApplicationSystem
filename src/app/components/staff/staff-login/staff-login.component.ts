@@ -30,7 +30,7 @@ export class StaffLoginComponent implements OnInit {
         if(this.loginDetails.password==this.loginForm.get('password')?.value)
         {
           window.alert("Logged in successfully...")
-          this.router.navigate(['staffdashboard'])
+          this.router.navigate(['staffdashboard/createquiz'])
         }
         else
         {

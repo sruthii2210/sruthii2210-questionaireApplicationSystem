@@ -1,5 +1,6 @@
 <br>
-<h2 style="text-align: center;font-size: 20px;"><i>View StudentList</i></h2>
+<h2 style="margin-left: 600px;font-size: 20px;"><i><b>View Student List</b></i></h2>
+<br>
 <form [formGroup]="viewStudent">
     <table class="table table-hover table-sm">
         <tr>
@@ -9,22 +10,18 @@
         <tr>
             <th>Course</th>
             <td>
-                <select (focus)="getCourse()" class="custom-select" style="height: 35px" name="code"
+                <select (focus)="getCourse()" (change)="getDetails()" class="custom-select" style="height: 35px" name="code"
                     formControlName="code" required>
                     <option value="">Select Course</option>
                     <option *ngFor="let code of subjectCode;let i=index">{{code}}</option>
                 </select>
             </td>
         </tr>
-        <tr>
+        <!-- <tr>
             <td><input type="submit" class="button btn-info" (click)="getDetails()" value="GetDetails"></td>
-        </tr>
-    </table>
+        </tr> -->
 
-
-<div *ngIf="standards.length>0">
-    <table class="table table-hover table-sm">
-        <tr>
+        <!-- <tr *ngIf="standards.length>0">
             <th>Class</th>
             <td>
                  <select class="custom-select" style="height: 35px" name="standardSection" formControlName="standardSection" required>
@@ -32,13 +29,31 @@
                     <option *ngFor="let standard of standards;let i=index">{{standard}}-{{sections[i]}}</option>
                 </select> 
             </td> 
+        </tr> -->
+    <!-- </table>
+
+
+<div *ngIf="standards.length>0">
+    <table style="width:200px" class="table table-hover table-sm"> -->
+        <tr *ngIf="standards.length>0">
+            <th>Class</th>
             <td>
-                <button (click)="getStudent()" class="button btn-info">GetStudents</button>
-            </td>
+                 <select class="custom-select" style="height: 35px" name="standardSection" formControlName="standardSection" required>
+                    <option value="">Select Section</option>
+                    <option *ngFor="let standard of standards;let i=index">{{standard}}-{{sections[i]}}</option>
+                </select> 
+            </td> 
         </tr>
+        <!-- <tr>
+            <td>
+                <button style="margin-left: 100px;" (click)="getStudent()" class="btn btn-info">GetStudents</button>
+            </td>
+        </tr> -->
     </table>
-</div>
+    <button style="margin-left: 170px;" (click)="getStudent()" class="btn btn-info">GetStudents</button>
+    <br>
 <div *ngIf="students.length>0">
+    <br>
     <table class="table table-hover table-sm">
         <tr>
             <th>RegisterNo</th>

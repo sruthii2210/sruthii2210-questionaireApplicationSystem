@@ -27,7 +27,7 @@ export class ViewCourseQuizComponent implements OnInit {
    }
    StaffCourseForm=new FormGroup(
     {
-      staffId:new FormControl(''),
+      staffId:new FormControl({value:'',disabled:true}),
       code:new FormControl(''),
       name:new FormControl('')
       

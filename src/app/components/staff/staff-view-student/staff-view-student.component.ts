@@ -33,9 +33,9 @@ export class StaffViewStudentComponent implements OnInit {
 
   viewStudent = new FormGroup(
     {
-      staffId: new FormControl(''),
+      staffId: new FormControl({value:'',disabled:true}),
       code: new FormControl(''),
-      standardSection: new FormControl('')
+      standardSection: new FormControl(''),
     }
   )
   getCourse() {
@@ -103,6 +103,11 @@ export class StaffViewStudentComponent implements OnInit {
         )
       }, error => { window.alert(error.error.statusText) }
     )
+  }
+
+  get standardSection()
+  {
+    return this.viewStudent.get('standardSection')
   }
   ngOnInit(): void {
     

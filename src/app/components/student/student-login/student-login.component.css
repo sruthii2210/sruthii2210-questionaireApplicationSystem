@@ -1,10 +1,15 @@
-form
-{
-	margin-left: 470px;
-	height:auto;
-	width:60%;
-}
 table{
-	width:50%
-
+	width:70%;
+	margin-left:70px; 
+	
+}
+td{
+	padding: 3px;
+}
+.box
+{
+	width:45%;
+	padding: 3px;
+	margin-left: 340px;
+	background-color: lightblue;
 }

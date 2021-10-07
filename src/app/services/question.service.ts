@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Quiz } from '../model/quiz';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,11 @@ export class QuestionService {
 
   getQuestionCount(quizId:any):Observable<any>
   {
-    return this.http.get('http://localhost:8086/api/question/questionCount/'+`${quizId}`); 
+    return this.http.get('http://localhost:8086/api/questionCount/'+`${quizId}`); 
+  }
+
+  getCountOfQuestion(quizIds:number[]):Observable<any>
+  {
+    return this.http.get('http://localhost:8086/api/question/question/questionCount/'+`${quizIds}`); 
   }
 }

@@ -54,7 +54,7 @@ export class StudentViewQuizComponent implements OnInit {
 
   getClassDetails = new FormGroup(
     {
-      rollNo: new FormControl(''),
+      rollNo: new FormControl({value:'',disabled:true}),
       standard: new FormControl(''),
       section: new FormControl(''),
       roomNo: new FormControl(''),

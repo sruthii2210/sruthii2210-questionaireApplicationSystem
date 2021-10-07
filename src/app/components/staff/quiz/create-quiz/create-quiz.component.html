@@ -6,7 +6,7 @@
 <table class="table table-hover table-sm" >
     <tr>
         <th>StaffId</th>
-        <td><input  type="text" class="form-control" name="staffId" [(ngModel)]="staffId" [value]="staffId" readonly=true  formControlName="staffId" required></td>
+        <td><input  type="text" class="form-control" name="staffId" [(ngModel)]="staffId" [value]="staffId" formControlName="staffId" disabled:true></td>
     </tr>
     <tr>
         <th>Course</th>
@@ -27,6 +27,10 @@
         <th>QuizDate</th>
         <td><input  type="date" class="form-control" name="quizDate" formControlName="quizDate" required></td>
     </tr>
+    <tr>
+        <th>Pass Percentage</th>
+        <td><input  type="number" class="form-control" name="pass" formControlName="pass" required></td>
+    </tr>
 
     <!-- <tr>
         <td></td>
@@ -41,8 +45,8 @@
     </tr> -->
 </table>
 
-<input  style="margin-left: 230px;" class="button btn-info" [disabled]="quizName.length==0" type="submit" value="CreateQuiz"><br><br>
-<a style="margin-left: 110px;"(focus)="setSubCode()" href='staffdashboard/viewquiz'>To Edit previous Quiz</a>
-<a style="margin-left: 30px;" href="staffdashboard">Back to Dashboard</a>
+<input  style="margin-left: 210px;" class="button btn-info" type="submit" value="CreateQuiz"><br><br>
+<a style="margin-left: 210px;"(focus)="setSubCode()" href='staffdashboard/viewquiz'>To Edit previous Quiz</a>
+
 
 </form>

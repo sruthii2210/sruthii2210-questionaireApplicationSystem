@@ -35,7 +35,7 @@ export class StaffViewResultComponent implements OnInit {
 
  resultForm = new FormGroup(
     {
-      staffId: new FormControl('', Validators.required),
+      staffId: new FormControl({value:'',disabled:true}, Validators.required),
       code: new FormControl(''),
     }
   )

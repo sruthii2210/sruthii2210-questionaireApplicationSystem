@@ -34,7 +34,7 @@
         </tr>
         <tr class="styleTxt" *ngFor="let subject of subjectDetails;let i=index;">
             <td>{{subject.code}}</td>
-            <td>{{quizNames[i]}}:{{quizOne[i]|number:'1.0-0'}}</td>
+            <td>{{quizOne[i]|number:'1.0-0'}}</td>
             <td>{{quizTwo[i]|number:'1.0-0'}}</td>
             <td>{{quizThree[i]|number:'1.0-0'}}</td>
             <td>{{quizOne[i]+quizTwo[i]+quizThree[i]|number:'1.0-0'}}</td>

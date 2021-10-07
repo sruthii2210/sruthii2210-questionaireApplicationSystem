@@ -1,0 +1,135 @@
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+</head>
+<body>
+<br>
+<h4 style="text-align: center;"><b><i>Result</i></b></h4>
+<br>
+<form>
+
+  
+    <!-- <table>
+    <tr *ngFor="let subject of subjectDetails;let i=index">
+    <td> -->
+    <div style="width:400px" class="container col-sm-32">
+        <div class="accordion" id="accordionSection">
+            <div class="accordion-item mb-3">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" style="background-color:#e7f1ff;"   data-bs-toggle="collapse" data-bs-target="#english">{{subjectCodes[0]}}</button></h2>
+                    
+                <div class="accordion-collapse collapse" id="english" data-bs-parent="accordionSection">
+                    <div class="accordion-body" style="background-color: white;">
+                        <table >
+                            <tr>
+                                <th>Name</th>
+                                <th>Marks</th>
+                            </tr>
+                            <tr *ngFor="let name of subject1QuizNameList;let i=index">
+                                <td>{{name}}<td>
+                                <td>{{subjectOneQuiz[i]|number:'1.0-0'}}</td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                </div>
+            
+            </div>
+
+
+
+            <div class="accordion-item mb-3">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" style="background-color:#e7f1ff;"   data-bs-toggle="collapse" data-bs-target="#maths">{{subjectCodes[1]}}</button></h2>
+                    
+                <div class="accordion-collapse collapse" id="maths" data-bs-parent="accordionSection">
+                    <div class="accordion-body" style="background-color: white;">
+                        <table>
+                            <tr >
+                                <th>Name</th>
+                                <th>Marks</th>
+                            </tr>
+                            <tr *ngFor="let name of subject2QuizNameList;let i=index">
+                                <td>{{name}}<td>
+                                <td>{{subjectTwoQuiz[i]|number:'1.0-0'}}</td>
+                            </tr>
+                           
+                        </table>
+                    </div>
+                </div>
+            
+            </div>
+
+
+            <div class="accordion-item mb-3">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" style="background-color:#e7f1ff;"   data-bs-toggle="collapse" data-bs-target="#science">{{subjectCodes[2]}}</button></h2>
+                    
+                <div class="accordion-collapse collapse" id="science" data-bs-parent="accordionSection">
+                    <div class="accordion-body" style="background-color: white;">
+                        <table>
+                            <tr >
+                                <th>Name</th>
+                                <th>Marks</th>
+                            </tr>
+                            <tr *ngFor="let name of subject3QuizNameList;let i=index">
+                                <td>{{name}}<td>
+                                <td>{{subjectThreeQuiz[i]|number:'1.0-0'}}</td>
+                            </tr>
+                           
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item mb-3">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" style="background-color:#e7f1ff;"   data-bs-toggle="collapse" data-bs-target="#social">{{subjectCodes[3]}}</button></h2>
+                    
+                <div class="accordion-collapse collapse" id="social" data-bs-parent="accordionSection">
+                    <div class="accordion-body" style="background-color: white;">
+                        <table>
+                            <tr >
+                                <th>Name</th>
+                                <th>Marks</th>
+                            </tr>
+                            <tr *ngFor="let name of subject4QuizNameList;let i=index">
+                                <td>{{name}}<td>
+                                <td>{{subjectFourQuiz[i]|number:'1.0-0'}}</td>
+                            </tr>
+                           
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="accordion-item mb-3">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" style="background-color:#e7f1ff;"   data-bs-toggle="collapse" data-bs-target="#tamil">{{subjectCodes[4]}}</button></h2>
+                    
+                <div class="accordion-collapse collapse" id="tamil" data-bs-parent="accordionSection">
+                    <div class="accordion-body" style="background-color: white;">
+                        <table>
+                            <tr >
+                                <th>Name</th>
+                                <th>Marks</th>
+                            </tr>
+                            <tr *ngFor="let name of subject5QuizNameList;let i=index">
+                                <td>{{name}}<td>
+                                <td>{{subjectFiveQuiz[i]|number:'1.0-0'}}</td>
+                                <td></td>
+                            </tr>
+                           
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+<!-- </td>
+</tr>
+</table> -->
+  </form>
+</body>

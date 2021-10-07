@@ -25,14 +25,14 @@
 </div> -->
 <div *ngIf="quizList.length>0">
 <form>
-<table class="table table-hover table-sm">
+<table style="margin-left: 100px;" class="table table-hover table-sm">
     <tr> 
-        <td><b>QuizId</b></td>
+        
         <td><b>QuizName</b></td>
         <td>Action</td>
     </tr >
     <tr *ngFor="let quiz of quizList">
-        <td>{{quiz.autoId}}</td>
+      
         <td>{{quiz.name}}</td>
         <td><button (click)="getResult(quiz)" class="button btn-info">Get Result</button></td>
         
@@ -42,7 +42,7 @@
 </form>
 </div> 
 
-<form style="margin-left: 240px;width:70%">
+<form style="margin-left: 270px;width:70%">
 <div *ngIf="results.length>0">
     <br>
     
@@ -50,17 +50,17 @@
         <tr> 
             <td><b>Register No</b></td>
             <td><b>StudentName</b></td>
-            <td><b>SubjectCode</b></td>
-            <td><b>SubjectName</b></td>
-            <td><b>QuizId</b></td>
+            <td><b>Course</b></td>
+            <td><b>CourseName</b></td>
+            <td><b>QuizName</b></td>
             <td><b>Score</b></td>
         </tr >
         <tr *ngFor="let result of results">
              <td>{{result.student?.rollNo}}</td>
             <td>{{result.student?.name}}</td>
-            <td>{{result.subject?.code}}</td>
-            <td>{{result.subject?.name}}</td>
-            <td>{{result.quiz?.autoId}}</td>
+            <td>{{result.quiz?.subject?.code}}</td>
+            <td>{{result.quiz?.subject?.name}}</td>
+            <td>{{result.quiz?.name}}</td>
             <td>{{result.score}}</td>
             
             

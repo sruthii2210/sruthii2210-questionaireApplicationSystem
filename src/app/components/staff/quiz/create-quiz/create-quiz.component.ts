@@ -31,10 +31,11 @@ export class CreateQuizComponent implements OnInit {
 
   StaffCourseForm = new FormGroup(
     {
-      staffId: new FormControl('', Validators.required),
+      staffId: new FormControl({value:'',disabled:true}, Validators.required),
       code: new FormControl('', Validators.required),
       name: new FormControl(''),
       quizDate: new FormControl(''),
+      pass:new FormControl(''),
     }
   )
   getCourse() {
@@ -62,6 +63,7 @@ export class CreateQuizComponent implements OnInit {
     console.log(this.StaffCourseForm.get('code')?.value)
     this.quiz.name = this.StaffCourseForm.get('name')?.value;
     this.quiz.quizDate = this.StaffCourseForm.get('quizDate')?.value;
+    this.quiz.passPercent=this.StaffCourseForm.get('passPercent')?.value,
     this.quizService.saveQuiz(this.StaffCourseForm.get('staffId')?.value, this.StaffCourseForm.get('code')?.value, this.quiz)
       .subscribe(data => {
         console.log(data), (error: any) => console.log(error)

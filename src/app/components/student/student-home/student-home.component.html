@@ -19,15 +19,15 @@
 </form>
 <br>
 <div *ngIf="subjects.length>0">
-<form style="margin-left: 300px;">
+<form style="margin-left: 320px;">
     <table class="table table-hover table-sm">
         <tr>
-            <th>Subjects</th>
+            <th>Course</th>
             <!-- <th>StaffId</th> -->
-            <th>TotalCreatedQuiz</th>
-            <th>AvailableQuiz</th>
+            <th>TotalCreated</th>
+            <th>Available</th>
             <th>Completed</th>
-            <th>ExpiredQuiz</th>
+            <th>Expired</th>
         </tr>
         
         <tr  *ngFor="let subject of subjects;let i=index">

@@ -20,4 +20,9 @@ export class SubjectService {
   {
     return this.http.post('http://localhost:8086/api/subject/'+`${standard}`,subject);
   }
+
+  getAllTeachers(roomNo:any,subjectCode:String[]):Observable<any>
+  {
+    return this.http.get('http://localhost:8086/api/subject/'+`${roomNo}`+'/'+`${subjectCode}`);
+  }
 }

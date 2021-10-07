@@ -36,6 +36,7 @@ import { StaffLoginCredentialsComponent } from './components/staff/staff-login-c
 import { StaffViewStudentComponent } from './components/staff/staff-view-student/staff-view-student.component';
 import { StudentLoginCredentialsComponent } from './components/student/student-login-credentials/student-login-credentials.component';
 import { SidebarModule } from 'ng-sidebar';
+import { ViewResultComponent } from './components/student/view-result/view-result.component';
 // import { ModalModule } from 'ngx-bootstrap';
 
 
@@ -71,6 +72,7 @@ import { SidebarModule } from 'ng-sidebar';
     StaffLoginCredentialsComponent,
     StaffViewStudentComponent,
     StudentLoginCredentialsComponent,
+    ViewResultComponent,
     
     
   ],

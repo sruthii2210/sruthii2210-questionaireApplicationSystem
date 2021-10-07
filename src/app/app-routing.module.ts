@@ -30,6 +30,7 @@ import { StudentViewResultComponent } from './components/student/student-view-re
 import { TakeQuizComponent } from './components/student/take-quiz/take-quiz.component';
 import { UpdateProfileComponent } from './components/student/update-profile/update-profile.component';
 import { ViewProfileComponent } from './components/student/view-profile/view-profile.component';
+import { ViewResultComponent } from './components/student/view-result/view-result.component';
 
 
 const routes: Routes = [
@@ -70,6 +71,7 @@ const routes: Routes = [
       { path: 'takequiz', component: TakeQuizComponent },
       { path: 'studentviewprofile', component: ViewProfileComponent, children: [{ path: 'studentupdateprofile', component: UpdateProfileComponent }] },
       { path: 'studentviewresult', component: StudentViewResultComponent },
+      {path:'viewresult',component:ViewResultComponent},
 
     ]
   },

@@ -22,7 +22,7 @@ export class ViewQuizComponent implements OnInit {
 
   quizForm=new FormGroup(
     {
-      staffId:new FormControl('')
+      staffId:new FormControl({value:'',disabled:true})
     }
   )
   subCode=localStorage.getItem("subCode")

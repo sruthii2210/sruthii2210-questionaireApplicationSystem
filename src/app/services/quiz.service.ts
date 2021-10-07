@@ -21,9 +21,10 @@ export class QuizService {
   {
     return this.http.get('http://localhost:8086/api/quiz/'+`${subCode}`); 
   }
-  getDatediff(date:any):Observable<any>
+  
+  getAllQuiz(teacherList:Number[],subjectList:String[]):Observable<any>
   {
-    return this.http.get('http://localhost:8086/api/quiz/date/'+`${date}`); 
+    return this.http.get('http://localhost:8086/api/quiz/teacher/'+`${teacherList}`+'/'+`${subjectList}`)
   }
   
 }

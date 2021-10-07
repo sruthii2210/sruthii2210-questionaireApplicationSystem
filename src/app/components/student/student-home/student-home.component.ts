@@ -60,7 +60,7 @@ export class StudentHomeComponent implements OnInit {
 
   getClassDetails = new FormGroup(
     {
-      rollNo: new FormControl(''),
+      rollNo: new FormControl({value:'',disabled:true}),
       standard: new FormControl(''),
       section: new FormControl(''),
     }

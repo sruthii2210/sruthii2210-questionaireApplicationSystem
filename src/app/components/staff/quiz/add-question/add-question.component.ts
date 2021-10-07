@@ -120,6 +120,13 @@ add()
 }
 
   ngOnInit(): void {
+    this.questionService.getQuestion(localStorage.getItem("quizId")).subscribe(
+      response=>{
+        this.response=response
+          this.questions=this.response.data;
+          console.log(this.questions)
+          this.questionsLength=this.questions.length
+      }) 
   } 
 
 }

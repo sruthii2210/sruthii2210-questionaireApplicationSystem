@@ -32,12 +32,12 @@ export class StudentLoginComponent implements OnInit {
         if(this.loginDetails.password==this.loginForm.get('password')?.value)
         {
           window.alert("Logged in successfully...")
-          this.router.navigate(['studentdashboard'])
+          this.router.navigate(['studentdashboard/studenthome'])
         }
         else
         {
           window.alert("Enter valid Id and password..")
-          window.location.reload()
+          this.loginForm.reset()
         }
       },error=>{window.alert(error.error.statusText)}
     )
