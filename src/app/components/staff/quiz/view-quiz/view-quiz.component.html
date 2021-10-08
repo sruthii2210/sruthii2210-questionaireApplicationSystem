@@ -1,6 +1,6 @@
 <br>
-<h2 style="text-align: center;font-size: 20px;"><i>Quiz Details</i></h2>
-<form  [formGroup]="quizForm" (ngSubmit)="onSubmit()">
+<h2 style="text-align: center;font-size: 20px;"><i><b>Quiz List</b></i></h2>
+<!-- <form  [formGroup]="quizForm" (ngSubmit)="onSubmit()">
     <table class="table table-hover table-sm">
         <tr>
             <td>StaffId</td>
@@ -13,7 +13,7 @@
     </table>
     <input style="margin-left: 200px;" type="submit" class="button btn-info" value="GetDetails">
     <br>
-</form>
+</form> -->
 <div *ngIf="quizList.length==0">
     <p>No records found!</p>
 </div>

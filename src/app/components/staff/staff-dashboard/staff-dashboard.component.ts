@@ -15,7 +15,10 @@ export class StaffDashboardComponent implements OnInit {
   {
     let response=window.confirm("Are you sure to logout..")
     if(response)
+    {
+      localStorage.clear()
     this.router.navigate(['home'])
+    }
   }
   ngOnInit(): void {
   }

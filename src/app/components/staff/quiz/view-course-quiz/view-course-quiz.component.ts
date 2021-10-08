@@ -39,8 +39,8 @@ export class ViewCourseQuizComponent implements OnInit {
 
   getCourse()
   {
-      console.log(this.StaffCourseForm.get('staffId')?.value)
-    this.subjectService.getCourseById(this.StaffCourseForm.get('staffId')?.value).subscribe(
+      console.log(localStorage.getItem("staffId"))
+    this.subjectService.getCourseById(localStorage.getItem("staffId")).subscribe(
       data=>{
         this.response=data
         this.subjects=this.response.data
@@ -54,7 +54,7 @@ export class ViewCourseQuizComponent implements OnInit {
  
     localStorage.setItem("subCode",this.StaffCourseForm.get('code')?.value)
   
-    this.quizService.getQuizByStaff(this.StaffCourseForm.get('staffId')?.value,localStorage.getItem("subCode")).subscribe(
+    this.quizService.getQuizByStaff(localStorage.getItem("staffId"),localStorage.getItem("subCode")).subscribe(
       data=>{
         let publishedQuiz:Quiz[]=[]
         this.response=data
@@ -62,7 +62,7 @@ export class ViewCourseQuizComponent implements OnInit {
         console.log(data)
         
 
-        this.quizService.getQuiz(this.StaffCourseForm.get('staffId')?.value,localStorage.getItem("subCode")).subscribe(
+        this.quizService.getQuiz(localStorage.getItem("staffId"),localStorage.getItem("subCode")).subscribe(
           data=>{
             let pendingQuiz:Quiz[]=[]
             this.response=data
@@ -89,6 +89,21 @@ export class ViewCourseQuizComponent implements OnInit {
     localStorage.setItem("id",id)
     this.router.navigate(['staffdashboard/viewquestion'])
   }
+
+  addQuestion(id: any,name: any)
+  {
+    for(var i = 0; i < this.quizList.length; i++)
+    { 
+      console.log(this.quizList[i].autoId);
+        console.log(this.quizList[i].name); 
+        if(this.quizList[i].autoId==id&&this.quizList[i].name==name)
+        {
+          localStorage.setItem("quizId",id)
+          
+              this.router.navigate(['staffdashboard/addquestion'])
+        }
+  }
+}
 
 
  

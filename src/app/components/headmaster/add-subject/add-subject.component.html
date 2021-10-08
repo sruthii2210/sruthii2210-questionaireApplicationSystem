@@ -2,7 +2,7 @@
 <h3 style="text-align: center;font-size: 20px;"><b><i>Add Subjects</i></b></h3>
 <form [formGroup]="getStudent">
     <br>
-    <table class="table-sm">
+    <table class="table table-hover table-sm">
         <tr>
             <th>Standard</th>
             <td><select class="custom-select" style="height: 35px" name="standard" (change)="getStandard()" formControlName="standard" required>
@@ -40,5 +40,5 @@
         
     </table>
     <br>
-    <button [disabled]="subjects.length==5" (click)="add()" class="button btn-info" >AddSubject</button>
+    <button style="margin-left:240px;" [disabled]="subjects.length==5" (click)="add()" class="btn btn-info" >AddSubject</button>
 </form>

@@ -83,7 +83,7 @@ const routes: Routes = [
       { path: 'createanswer', component: CreateAnswerComponent },
       { path: 'viewquiz', component: ViewQuizComponent },
       { path: 'addquestion', component: AddQuestionComponent },
-      { path: 'viewcoursequiz', component: ViewCourseQuizComponent },
+      { path: 'viewcoursequiz', component: ViewCourseQuizComponent,children:[{ path: 'viewquestion', component: ViewQuestionComponent }] },
       { path: 'viewquestion', component: ViewQuestionComponent },
       { path: 'staffviewresult', component: StaffViewResultComponent },
       { path: 'staffviewstudent', component: StaffViewStudentComponent },

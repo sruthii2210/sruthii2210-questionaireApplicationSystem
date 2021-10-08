@@ -5,6 +5,7 @@ import { Class } from 'src/app/model/class';
 import { Response } from 'src/app/model/response';
 import { Student } from 'src/app/model/student';
 import { StudentService } from 'src/app/services/student.service';
+import { ResourceLoader } from '@angular/compiler';
 
 @Component({
   selector: 'app-update-profile',
@@ -38,13 +39,16 @@ export class UpdateProfileComponent implements OnInit {
         let responseBody:Response=response
         console.log(responseBody.data)
         window.alert(responseBody.statusText)
+        this.dialogRef.close();
+        location.reload();
+       
       },error=>{window.alert(error.error.statusText)}
     )
   }
-  Cancel()
-  {
-    this.dialogRef.close();
-    this.router.navigate(['viewprofile'])
-  }
+  // Cancel()
+  // {
+  //   this.dialogRef.close();
+  //   this.router.navigate(['viewprofile'])
+  // }
 
 }

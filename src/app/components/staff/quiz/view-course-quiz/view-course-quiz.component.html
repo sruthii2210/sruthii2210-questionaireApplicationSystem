@@ -1,11 +1,11 @@
 <form [formGroup]="StaffCourseForm"  (ngSubmit)="onSubmit()">
     <br>
-    <h2 style="text-align: center;font-size: 20px;"><i>List of Quiz for courses</i></h2>
+    <h2 style="text-align: center;font-size: 20px;"><i><b>List of Quiz for courses</b></i></h2>
     <table class="table table-hover table-sm">
-        <tr>
+        <!-- <tr>
             <th>StaffId</th>
             <td><input  type="text" class="form-control" name="staffId" formControlName="staffId" [(ngModel)]="staffId" [value]="staffId" required></td>
-        </tr>
+        </tr> -->
     
         <tr>
             <th>Course</th>
@@ -34,19 +34,20 @@
        
         <td><b>QuizName</b></td>
         <td><b>Status</b></td>
-        <td><b>Action</b></td>
+        <td id="action"><b>Action</b></td>
     </tr >
-    <tr *ngFor="let q of quizList">
+    <tr *ngFor="let quiz of quizList">
        
-        <td>{{q.name}}</td>
-        <td>{{q.status}}</td>
-        <td><input (focus)="view(q.autoId)" type="submit" value="View"></td>
+        <td>{{quiz.name}}</td>
+        <td>{{quiz.status}}</td>
+        <td><input (focus)="view(quiz.autoId)" type="submit" value="View">
+        <input id="margin" (focus)="addQuestion(quiz.autoId,quiz.name)" type="submit" value="Edit"></td>
     </tr>
 </table>
 
-<a href="staff">Back to page</a>
 </div>
 </form>
+<router-outlet></router-outlet>
  <!-- <div *ngIf="quiz.length>0">  -->
 <!-- <table  class="table table-hover table-sm">
     <tr>

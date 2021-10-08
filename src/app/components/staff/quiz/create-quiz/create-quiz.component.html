@@ -1,13 +1,13 @@
 <br>
- <h2 style="text-align: center;font-size: 20px;"><i>Staff Course Details</i></h2>
+ <h2 style="text-align: center;font-size: 20px;"><i><b>Create Quiz</b></i></h2>
  <br>
 <form [formGroup]="StaffCourseForm"  (ngSubmit)="onSubmit()">
    
 <table class="table table-hover table-sm" >
-    <tr>
+    <!-- <tr>
         <th>StaffId</th>
         <td><input  type="text" class="form-control" name="staffId" [(ngModel)]="staffId" [value]="staffId" formControlName="staffId" disabled:true></td>
-    </tr>
+    </tr> -->
     <tr>
         <th>Course</th>
         <td>
@@ -20,7 +20,14 @@
 
     <tr>
         <th>Quiz Name</th>
-        <td><input  type="text" class="form-control" name="name" formControlName="name" required></td>
+        <td><input  type="text" class="form-control" name="name" formControlName="name" required>
+        <div *ngIf="name?.invalid && (name?.touched||name?.dirty)" class="alert alert-danger">
+            <div *ngIf="name?.errors?.required">
+                QuizName is required..
+            </div>
+        </div>
+        </td>
+        
     </tr>
 
     <tr>
@@ -45,8 +52,9 @@
     </tr> -->
 </table>
 
-<input  style="margin-left: 210px;" class="button btn-info" type="submit" value="CreateQuiz"><br><br>
-<a style="margin-left: 210px;"(focus)="setSubCode()" href='staffdashboard/viewquiz'>To Edit previous Quiz</a>
+<input  style="margin-left: 210px;" class="button btn-info" type="submit" value="CreateQuiz">
+<!-- <button style="margin-left: 2px;"  class="button btn-info" (click)="publish()">PublishQuiz</button><br><br> -->
+<!-- <a style="margin-left: 210px;"(focus)="setSubCode()" href='staffdashboard/viewquiz'>To Edit previous Quiz</a> -->
 
 
 </form>

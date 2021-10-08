@@ -6,14 +6,13 @@
            <td>
             {{i+1}}.   {{q.question}}
                <ol>
-               <li *ngIf="q.answer?.crctAns ==1" style="color:green">{{q.answer?.option1}}<span style="font-family: wingdings; margin-left:20px;font-size: 100%;">&#10004;</span></li>
+               <b><li *ngIf="q.answer?.crctAns ==1" style="color:green">{{q.answer?.option1}}<span style="margin-left:20px;font-size: 100%;">&#10003;</span></li></b>
                <li *ngIf="q.answer?.crctAns !=1">{{q.answer?.option1}}<div></div></li>
-               <li *ngIf="q.answer?.crctAns ==2" style="color:green">{{q.answer?.option2}}<span style="font-family: wingdings; margin-left:20px;font-size: 100%;">&#10004;</span></li>
+               <b><li *ngIf="q.answer?.crctAns ==2" style="color:green">{{q.answer?.option2}}<span style=" margin-left:20px;font-size: 100%;">&#10003;</span></li></b>
                <li *ngIf="q.answer?.crctAns !=2">{{q.answer?.option2}}<div></div></li>
-               <li *ngIf="q.answer?.crctAns ==3" style="color:green">{{q.answer?.option3}}<span style="font-family: wingdings; margin-left:20px;font-size: 100%;">&#10004;</span></li>
+               <b><li *ngIf="q.answer?.crctAns ==3" style="color:green">{{q.answer?.option3}}<span style=" margin-left:20px;font-size: 100%;">&#10003;</span></li></b>
                <li *ngIf="q.answer?.crctAns !=3">{{q.answer?.option3}}<div></div></li>
-               <li *ngIf="q.answer?.crctAns ==4" style="color:green">{{q.answer?.option4}}<span style="font-family: wingdings; margin-left:20px;font-size: 100%;">&#10004;</span>
-               </li>
+               <b><li *ngIf="q.answer?.crctAns ==4" style="color:green">{{q.answer?.option4}}<span style="margin-left:20px;font-size: 100%;">&#10003;</span></li></b>
                <li *ngIf="q.answer?.crctAns !=4">{{q.answer?.option4}}<div></div></li>
              
             </ol>
@@ -21,6 +20,7 @@
     
         </tr>
     
-        <tr><td><a href="staffdashboard/viewcoursequiz">Back to page</a></td></tr>
+        <!-- <tr><td><a href="staffdashboard/viewcoursequiz">Back to page</a></td></tr> -->
     </table>
+    <button class="btn btn-info" (click)="publish()">Publish Quiz</button>
     </form>

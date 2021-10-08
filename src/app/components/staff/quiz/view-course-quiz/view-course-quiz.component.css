@@ -4,3 +4,17 @@ form
 	height:auto;
 	width:40%;
 }
+
+th,td
+{
+	text-align: center;
+}
+
+#action
+{
+	text-align: center;
+}
+#margin
+{
+	margin-left: 0.5cm;
+}
