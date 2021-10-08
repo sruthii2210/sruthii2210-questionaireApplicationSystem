@@ -29,12 +29,14 @@ export class ViewQuizComponent implements OnInit {
   
   onSubmit()
   {
-    this.quizService.getQuiz(localStorage.getItem("staffId"),localStorage.getItem("subCode")).subscribe(
+    this.quizService.getQuizByStaff(localStorage.getItem("staffId"),localStorage.getItem("subCode")).subscribe(
       data=>{
         this.response=data
         this.quizList=this.response.data
         console.log(data)
         this.quizLength=this.quizList.length
+        if(this.quizLength==0)
+        window.alert("No quiz found!..create new one..")
       }
     )
   }

@@ -15,24 +15,26 @@
             </select>
         </td>
     </tr>
-        <tr>
+        <!-- <tr>
             <td><input  type="submit" class="button btn-info" value="GetDetails"></td>
-        </tr>
+        </tr> -->
     </table>
+
+    <input  type="submit"  style="margin-left: 120px;" class="button btn-info" value="GetDetails">
+    <br>
 </form>
 <!-- <div *ngIf="quizList.length==0">
     <p>No records found!</p>
 </div> -->
 <div *ngIf="quizList.length>0">
 <form>
-<table style="margin-left: 100px;" class="table table-hover table-sm">
+    <br>
+<table style="margin-left: 70px;" class="table table-hover table-sm">
     <tr> 
-        
         <td><b>QuizName</b></td>
-        <td>Action</td>
+        <td><b>Action</b></td>
     </tr >
     <tr *ngFor="let quiz of quizList">
-      
         <td>{{quiz.name}}</td>
         <td><button (click)="getResult(quiz)" class="button btn-info">Get Result</button></td>
         

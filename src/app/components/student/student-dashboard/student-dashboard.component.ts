@@ -22,7 +22,8 @@ student:Student=new Student
   }
   logout()
   {
-    window.confirm("Are you sure need to logout..")
+    let response=window.confirm("Are you sure need to logout..")
+    if(response)
     this.router.navigate(['home'])
   }
   ngOnInit(): void {

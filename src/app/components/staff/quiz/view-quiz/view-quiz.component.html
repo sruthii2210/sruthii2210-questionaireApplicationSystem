@@ -14,7 +14,7 @@
     <input style="margin-left: 200px;" type="submit" class="button btn-info" value="GetDetails">
     <br>
 </form>
-<div *ngIf="quizLength==0">
+<div *ngIf="quizList.length==0">
     <p>No records found!</p>
 </div>
 <div *ngIf="quizLength>0">
@@ -22,12 +22,12 @@
     <br>
 <table class="table table-hover table-sm">
     <tr> 
-        <td><b>QuizId</b></td>
+        
         <td><b>QuizName</b></td>
-        <td></td>
+        <td><b>Action</b></td>
     </tr >
     <tr *ngFor="let quiz of quizList">
-        <td>{{quiz.autoId}}</td>
+        
         <td>{{quiz.name}}</td>
         <td><input (focus)="addQuestion(quiz.autoId,quiz.name)" type="submit" value="Edit"></td>
     </tr>

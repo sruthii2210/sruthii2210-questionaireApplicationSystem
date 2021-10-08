@@ -6,12 +6,14 @@ import { Class } from 'src/app/model/class';
 import { Question } from 'src/app/model/question';
 import { Quiz } from 'src/app/model/quiz';
 import { Response } from 'src/app/model/response';
+import { Result } from 'src/app/model/result';
 import { Student } from 'src/app/model/student';
 import { Subject } from 'src/app/model/subject';
 import { TeacherSubject } from 'src/app/model/teacher-subject';
 import { ClassService } from 'src/app/services/class.service';
 import { QuestionService } from 'src/app/services/question.service';
 import { QuizService } from 'src/app/services/quiz.service';
+import { ResultService } from 'src/app/services/result.service';
 import { StudentService } from 'src/app/services/student.service';
 import { SubjectService } from 'src/app/services/subject.service';
 import { TeacherSubjectService } from 'src/app/services/teacher-subject.service';
@@ -32,9 +34,11 @@ export class StudentViewQuizComponent implements OnInit {
   subjectDetails: Subject[] =[]
   roomNo: number = 0
   today: string="";
+  result:Result[]=[]
+
   constructor(private classService: ClassService, private subService: SubjectService, 
     private teacherSubject: TeacherSubjectService, private quizService: QuizService,
-    private router:Router,private studentService:StudentService,private questionService:QuestionService) {
+    private router:Router,private studentService:StudentService,private questionService:QuestionService,private resultService:ResultService) {
   }
 
 
@@ -77,7 +81,7 @@ export class StudentViewQuizComponent implements OnInit {
   // }
 
   getCourse() {
-    localStorage.setItem("rollNo",this.getClassDetails.get('rollNo')?.value)
+   // localStorage.setItem("rollNo",String(this.student.rollNo))
     this.subService.getSubject(this.student.classRoom?.standard).subscribe(
       data => {
         this.response = data
@@ -89,15 +93,30 @@ export class StudentViewQuizComponent implements OnInit {
   takeTest(autoId:any)
   {
     console.log(autoId)
-    this.questionService.getQuestion(localStorage.getItem("quizId")).subscribe(
+
+    this.resultService.getResultByRollNo(this.student.rollNo,autoId).subscribe(
       response=>{
-       let responseBody: Response = response;
-         this.questions=responseBody.data
-          console.log(this.questions)
-        //  localStorage.setItem("questions",JSON.stringify(this.questions))
-      })
-    localStorage.setItem("quizId",autoId);
-    this.router.navigate(['/studentdashboard/takequiz']);
+        let responseBody:Response=response
+        this.result=responseBody.data
+
+        if(this.result.length>0)
+          window.alert("You have already taken this quiz...Not able to take again!")
+
+          else
+          {
+            this.questionService.getQuestion(localStorage.getItem("quizId")).subscribe(
+              response=>{
+               let responseBody: Response = response;
+                 this.questions=responseBody.data
+                  console.log(this.questions)
+                //  localStorage.setItem("questions",JSON.stringify(this.questions))
+              })
+            localStorage.setItem("quizId",autoId);
+            this.router.navigate(['/studentdashboard/takequiz']);
+          }
+
+      }
+    )
   }
 
   onSubmit() {

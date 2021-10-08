@@ -22,7 +22,7 @@ export class QuestionService {
 
   getQuestionCount(quizId:any):Observable<any>
   {
-    return this.http.get('http://localhost:8086/api/questionCount/'+`${quizId}`); 
+    return this.http.get('http://localhost:8086/api/question/questionCount/'+`${quizId}`); 
   }
 
   getCountOfQuestion(quizIds:number[]):Observable<any>

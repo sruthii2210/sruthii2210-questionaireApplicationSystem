@@ -20,7 +20,7 @@ export class ViewCourseQuizComponent implements OnInit {
   response: Response = new Response;
   subjects:TeacherSubject[]|any
   questions:Question[]|any
-  quizList:Quiz[]|any
+  quizList:Quiz[]=[]
   quizLength:number=0
   staffId=localStorage.getItem("staffId")
   constructor(private subjectService:SubjectService,private quizService:QuizService,private questionService:QuestionService,private router:Router) {
@@ -54,13 +54,26 @@ export class ViewCourseQuizComponent implements OnInit {
  
     localStorage.setItem("subCode",this.StaffCourseForm.get('code')?.value)
   
-    this.quizService.getQuiz(this.StaffCourseForm.get('staffId')?.value,localStorage.getItem("subCode")).subscribe(
+    this.quizService.getQuizByStaff(this.StaffCourseForm.get('staffId')?.value,localStorage.getItem("subCode")).subscribe(
       data=>{
+        let publishedQuiz:Quiz[]=[]
         this.response=data
-        this.quizList=this.response.data
+        publishedQuiz=this.response.data
         console.log(data)
-        this.quizLength=this.quizList.length
-        console.log(this.quizLength)
+        
+
+        this.quizService.getQuiz(this.StaffCourseForm.get('staffId')?.value,localStorage.getItem("subCode")).subscribe(
+          data=>{
+            let pendingQuiz:Quiz[]=[]
+            this.response=data
+            pendingQuiz=this.response.data
+            console.log(data)
+            
+            this.quizList=this.quizList.concat(publishedQuiz).concat(pendingQuiz)
+            console.log(this.quizList)
+          })
+
+          this.quizList=[]
       }
     )
   }

@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Answer } from 'src/app/model/answer';
+import { Quiz } from 'src/app/model/quiz';
 import { Response } from 'src/app/model/response';
 import { AnswerService } from 'src/app/services/answer.service';
+import { QuizService } from 'src/app/services/quiz.service';
 
 @Component({
   selector: 'app-create-answer',
@@ -14,6 +16,7 @@ export class CreateAnswerComponent implements OnInit {
 
  
   answer:Answer=new Answer();
+  quiz:Quiz=new Quiz();
   createAnswer=new FormGroup(
     {
       option1:new FormControl(''),
@@ -23,7 +26,7 @@ export class CreateAnswerComponent implements OnInit {
       crctAns:new FormControl('')
     }
   )
-  constructor(private answerService:AnswerService,private router:Router) { }
+  constructor(private answerService:AnswerService,private quizService:QuizService,private router:Router) { }
   onSubmit()
   {
      this.answer.option1=this.createAnswer.get('option1')?.value,
@@ -40,7 +43,29 @@ export class CreateAnswerComponent implements OnInit {
          window.alert(response.statusText)
        }
      )
-    
+  }
+
+  publish()
+  {
+    this.quizService.getQuizByQuizId(Number(localStorage.getItem("quizId"))).subscribe(
+      response=>{
+        let responseBody:Response=response
+        this.quiz=responseBody.data
+
+        this.quiz.status="published"
+        this.quizService.updateQuiz(Number(this.quiz.teacher?.id),Number(localStorage.getItem("quizId")),String(this.quiz.subject?.code),
+        this.quiz).subscribe(
+          response=>{
+            let responseBody:Response=response
+            console.log(responseBody.data)
+           let value= window.confirm("Are you sure to publish quiz..")
+            if(value)
+              window.alert("Quiz is published")
+
+          }
+        )
+      }
+    )
   }
   ngOnInit(): void {
   }

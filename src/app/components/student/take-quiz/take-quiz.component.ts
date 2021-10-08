@@ -31,16 +31,29 @@ check(index:number,option:number)
   
 result()
 {
-  window.alert("Your score is "+this.count);
+
+  let questionCount: number = this.count
+  let calculate: number = questionCount * 100
+
+  this.questionService.getQuestionCount(localStorage.getItem("quizId")).subscribe(
+    response => {
+      let responseBody: Response = response
+      console.log(responseBody.data)
+
+      this.count = Number(calculate/responseBody.data)
+      this.count=Number(this.count.toFixed())
+      window.alert("Your score is "+this.count);
+    })
+
+
+  console.log(localStorage.getItem("subjectCode"))
   let result:Result=new Result;
   result.score=this.count
   this.resultService.publishResult(localStorage.getItem("loginId"),localStorage.getItem("subjectCode"),localStorage.getItem("quizId"),result).subscribe(
     response=>{
       let responseBody:Response=response;
       console.log(responseBody)
-      window.alert(responseBody.statusText)
-
-    }
+    },error=>{window.alert(error.error.statusText)}
   )
   this.router.navigate(['studentdashboard'])
 }

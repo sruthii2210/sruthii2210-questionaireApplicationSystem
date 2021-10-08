@@ -64,6 +64,7 @@ export class CreateQuizComponent implements OnInit {
     this.quiz.name = this.StaffCourseForm.get('name')?.value;
     this.quiz.quizDate = this.StaffCourseForm.get('quizDate')?.value;
     this.quiz.passPercent=this.StaffCourseForm.get('passPercent')?.value,
+    this.quiz.status="Pending";
     this.quizService.saveQuiz(this.StaffCourseForm.get('staffId')?.value, this.StaffCourseForm.get('code')?.value, this.quiz)
       .subscribe(data => {
         console.log(data), (error: any) => console.log(error)
@@ -79,6 +80,7 @@ export class CreateQuizComponent implements OnInit {
                 console.log(this.quizDetails[i].autoId);
                 console.log(this.quizDetails[i].name);
                 localStorage.setItem("quizId", this.quizDetails[i].autoId)
+                console.log(localStorage.setItem("quizId", this.quizDetails[i].autoId))
               }
             }
           }

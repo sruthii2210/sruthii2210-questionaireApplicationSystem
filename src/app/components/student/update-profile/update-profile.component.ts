@@ -44,7 +44,7 @@ export class UpdateProfileComponent implements OnInit {
   Cancel()
   {
     this.dialogRef.close();
-    window.location.reload()
+    this.router.navigate(['viewprofile'])
   }
 
 }

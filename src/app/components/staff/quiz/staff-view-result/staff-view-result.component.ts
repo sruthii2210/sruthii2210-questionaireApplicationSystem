@@ -51,7 +51,7 @@ export class StaffViewResultComponent implements OnInit {
   }
   onSubmit()
   {
-    this.quizService.getQuiz(this.resultForm.get('staffId')?.value, this.resultForm.get('code')?.value).subscribe(
+    this.quizService.getQuizByStaff(this.resultForm.get('staffId')?.value, this.resultForm.get('code')?.value).subscribe(
       response => {
         let responseBody:Response=response
         this.quizList = responseBody.data
