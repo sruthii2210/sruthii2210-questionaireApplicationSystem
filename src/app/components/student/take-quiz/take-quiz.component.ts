@@ -32,6 +32,9 @@ check(index:number,option:number)
 result()
 {
 
+  let response=window.confirm("Are you sure to submit");
+  if(response)
+  {
   let questionCount: number = this.count
   let calculate: number = questionCount * 100
 
@@ -55,7 +58,8 @@ result()
       console.log(responseBody)
     },error=>{window.alert(error.error.statusText)}
   )
-  this.router.navigate(['studentdashboard'])
+  this.router.navigate(['studentdashboard/studenthome'])
+  }
 }
   ngOnInit(): void {
 

@@ -19,10 +19,7 @@
             <th>Section</th>
             <td><input  type="text" class="form-control" name="section" formControlName="section" (change)="getclass()"  required></td>
         </tr>
-        <tr>
-            <th>ClassNo</th>
-            <td><input  type="text" class="form-control" name="roomNo" value={{roomNo}}  required></td>
-        </tr>
+        
         <tr>
             <th>DateOfBirth</th>
             <td><input  type="date" class="form-control" name="dateOfBirth" formControlName="dateOfBirth" required></td>
@@ -33,9 +30,9 @@
         </tr>
         <tr>
             <th>Address</th>
-            <td><input  type="text" class="form-control" name="address" formControlName="address" required></td>
+            <td><input  type="textarea" class="form-control" name="address" formControlName="address" required></td>
         </tr>
     </table>
     <br>
-    <button (click)="add()" class="button btn-info" >AddStudent</button>
+    <button style="margin-left: 3.6cm;" (click)="add()" class="btn btn-info" >Add</button>
 </form>

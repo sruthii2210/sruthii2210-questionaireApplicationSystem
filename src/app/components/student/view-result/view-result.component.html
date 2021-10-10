@@ -19,7 +19,7 @@
                 <div class="accordion-item mb-3">
                     <h2 class="accordion-header">
                         <button class="accordion-button collapsed" style="background-color:#e7f1ff;"
-                            data-bs-toggle="collapse" data-bs-target="#english">{{subjectCodes[0]}}-<b> {{result[0]}}</b></button>
+                            data-bs-toggle="collapse" data-bs-target="#english">{{subjectCodes[0]}}<b>&nbsp; {{result[0]}}</b></button>
                         
                     </h2>
 
@@ -50,7 +50,7 @@
                 <div class="accordion-item mb-3">
                     <h2 class="accordion-header">
                         <button class="accordion-button collapsed" style="background-color:#e7f1ff;"
-                            data-bs-toggle="collapse" data-bs-target="#maths">{{subjectCodes[1]}}</button>
+                            data-bs-toggle="collapse" data-bs-target="#maths">{{subjectCodes[1]}}<b>&nbsp; {{result[1]}}</b></button>
                     </h2>
 
                     <div class="accordion-collapse collapse" id="maths" data-bs-parent="accordionSection">
@@ -65,7 +65,7 @@
                                     <td *ngIf="subjectTwoQuiz.length>0">{{name}}</td>
                                     
                                     <td *ngIf="subjectTwoQuiz.length>0 && subject2Percent[i]>subjectTwoQuiz[i]"
-                                        style="color:red"><b>{{subjectOneQuiz[i]|number:'1.0-0'}}</b></td>
+                                        style="color:red"><b>{{subjectTwoQuiz[i]|number:'1.0-0'}}</b></td>
                                     <td *ngIf="subjectTwoQuiz.length>0 && subject2Percent[i]<=subjectTwoQuiz[i]">{{subjectTwoQuiz[i]|number:'1.0-0'}}</td>
                                     <td *ngIf="subjectTwoQuiz.length>0">{{totalMarks}}</td>
                                 </tr>
@@ -80,7 +80,7 @@
                 <div class="accordion-item mb-3">
                     <h2 class="accordion-header">
                         <button class="accordion-button collapsed" style="background-color:#e7f1ff;"
-                            data-bs-toggle="collapse" data-bs-target="#science">{{subjectCodes[2]}}</button>
+                            data-bs-toggle="collapse" data-bs-target="#science">{{subjectCodes[2]}}<b>&nbsp; {{result[2]}}</b></button>
                     </h2>
 
                     <div class="accordion-collapse collapse" id="science" data-bs-parent="accordionSection">
@@ -108,7 +108,7 @@
                 <div class="accordion-item mb-3">
                     <h2 class="accordion-header">
                         <button class="accordion-button collapsed" style="background-color:#e7f1ff;"
-                            data-bs-toggle="collapse" data-bs-target="#social">{{subjectCodes[3]}}</button>
+                            data-bs-toggle="collapse" data-bs-target="#social">{{subjectCodes[3]}}<b>&nbsp; {{result[3]}}</b></button>
                     </h2>
 
                     <div class="accordion-collapse collapse" id="social" data-bs-parent="accordionSection">
@@ -137,7 +137,7 @@
                 <div class="accordion-item mb-3">
                     <h2 class="accordion-header">
                         <button class="accordion-button collapsed" style="background-color:#e7f1ff;"
-                            data-bs-toggle="collapse" data-bs-target="#tamil">{{subjectCodes[4]}}</button>
+                            data-bs-toggle="collapse" data-bs-target="#tamil">{{subjectCodes[4]}}<b>&nbsp; {{ result[4]}}</b></button>
                     </h2>
 
                     <div class="accordion-collapse collapse" id="tamil" data-bs-parent="accordionSection">

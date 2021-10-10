@@ -20,8 +20,8 @@ export class ViewProfileComponent implements OnInit {
   constructor(private studentService:StudentService,private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    let rollNo:number=4001
-    localStorage.setItem("studentId",String(rollNo));
+    let rollNo=String(localStorage.getItem("loginId"))
+    localStorage.setItem("studentId",rollNo);
     this.studentService.getStudentById(rollNo).subscribe(
       response=>{
         let responseBody:Response=response

@@ -11,14 +11,14 @@
             <th>Section</th>
             <td><input  type="text" class="form-control" name="section" formControlName="section" (change)="getclass()" required></td>
         </tr>
-        <tr>
+        <!-- <tr>
             <th>ClassNo</th>
             <td><input  type="text" class="form-control" name="roomNo" value={{roomNo}} readonly=true required></td>
-        </tr>
+        </tr> -->
         
     </table>
-    <br>
-    <button (click)="view()" class="button btn-info" >viewStudent</button>
+   
+    <button style="margin-left: 3.3cm;" (click)="view()" class="btn btn-info" >View</button>
 </form>
 <br>
 <form *ngIf="students.length>0">
