@@ -13,6 +13,7 @@ import { Response } from 'src/app/model/response';
 })
 export class ViewStudentComponent implements OnInit {
 
+  standardList:String[]=['I',"II",'III','IV','V','VI','VII','VIII','IX','X','XI','XII']
   constructor(private classService:ClassService,private studentService:StudentService) { }
   students: Student[] = [];
   roomNo:number=0

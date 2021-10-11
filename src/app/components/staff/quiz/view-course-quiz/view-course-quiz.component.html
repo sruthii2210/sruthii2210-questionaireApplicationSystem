@@ -41,7 +41,7 @@
         <td>{{quiz.name}}</td>
         <td>{{quiz.status}}</td>
         <td><input (focus)="view(quiz.autoId)" type="submit" value="View">
-        <input id="margin" (focus)="addQuestion(quiz.autoId,quiz.name)" type="submit" value="Edit"></td>
+        <input id="margin" [disabled]="quiz.status=='Published'" (focus)="addQuestion(quiz.autoId,quiz.name)" type="submit" value="Edit"></td>
     </tr>
 </table>
 

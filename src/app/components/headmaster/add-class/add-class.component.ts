@@ -11,6 +11,7 @@ import { Response } from 'src/app/model/response';
 export class AddClassComponent implements OnInit {
 
   classDetails: Class = new Class;
+  standardList:String[]=['I',"II",'III','IV','V','VI','VII','VIII','IX','X','XI','XII']
   constructor(private classService:ClassService) { }
 
   addClass=new FormGroup(

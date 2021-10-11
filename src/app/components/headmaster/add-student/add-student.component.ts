@@ -14,7 +14,7 @@ import { StudentService } from 'src/app/services/student.service';
 export class AddStudentComponent implements OnInit {
 
   constructor(private studentService:StudentService,private classService:ClassService) { }
-
+  standardList:String[]=['I',"II",'III','IV','V','VI','VII','VIII','IX','X','XI','XII']
   student: Student = new Student;
   roomNo:number=0
   classDetails: Class = new Class;

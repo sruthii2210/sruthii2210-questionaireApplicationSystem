@@ -28,6 +28,8 @@ export class StudentLoginComponent implements OnInit {
         let responseBody: Response = response
         this.loginDetails = responseBody.data
         console.log(this.loginDetails)
+        if(this.loginDetails==null)
+        window.alert("New User..First Signup and login to access the portal");
         localStorage.setItem("loginId",this.loginForm.get('loginId')?.value)
         if(this.loginDetails.password==this.loginForm.get('password')?.value)
         {

@@ -5,11 +5,18 @@
     <table class="table table-hover table-sm">
         <tr>
             <th>Standard</th>
-            <td><input  type="text" class="form-control" name="standard" formControlName="standard" required></td>
+            <td><select class="custom-select" style="height: 35px" name="standard" formControlName="standard" required>
+                <option>Select standard</option>
+                <option *ngFor="let standard of standardList">{{standard}}</option>
+                
+            </select></td>
         </tr>
         <tr>
             <th>Section</th>
-            <td><input  type="text" class="form-control" name="section" formControlName="section" required></td>
+            <td><select class="custom-select" style="height: 35px" name="section" formControlName="section" required>
+                    <option>A</option>
+                    <option>B</option>
+                </select></td>
         </tr>
         <tr>
             <th>ClassNo</th>
